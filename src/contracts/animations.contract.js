@@ -8,10 +8,10 @@
  */
 
 /** Named identifiers for GSAP timelines. Use these as keys, never magic strings. */
-export const ANIMATION_IDS = {
+export const ANIMATION_IDS = Object.freeze({
   /** Hero section entrance animation (fade + slide from top) */
   HERO_ENTRANCE: 'hero-entrance',
-}
+})
 
 /**
  * Signature contract for animation functions.

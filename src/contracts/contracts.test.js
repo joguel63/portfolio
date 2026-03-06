@@ -7,8 +7,24 @@ describe('contracts', () => {
     expect(typeof ANIMATION_IDS.HERO_ENTRANCE).toBe('string')
   })
 
+  it('ANIMATION_IDS.HERO_ENTRANCE has the correct string value', () => {
+    expect(ANIMATION_IDS.HERO_ENTRANCE).toBe('hero-entrance')
+  })
+
   it('HERO_DEFAULTS exports expected shape', () => {
     expect(HERO_DEFAULTS).toHaveProperty('canvasHeight')
     expect(HERO_DEFAULTS).toHaveProperty('boxColor')
+  })
+
+  it('HERO_DEFAULTS exports expected shape and values', () => {
+    expect(HERO_DEFAULTS).toHaveProperty('canvasHeight', 'h-screen')
+    expect(HERO_DEFAULTS).toHaveProperty('boxColor', 'orange')
+    expect(HERO_DEFAULTS).toHaveProperty('entranceDuration', 1)
+    expect(typeof HERO_DEFAULTS.entranceDuration).toBe('number')
+  })
+
+  it('contract objects are frozen', () => {
+    expect(Object.isFrozen(ANIMATION_IDS)).toBe(true)
+    expect(Object.isFrozen(HERO_DEFAULTS)).toBe(true)
   })
 })
