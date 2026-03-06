@@ -1,23 +1,8 @@
-# Portfolio
+# Portfolio — [Your Name]
 
-Personal portfolio website built with React, Three.js, and GSAP.
+> Full-Stack Developer Portfolio built with React, Three.js, and GSAP
 
-**Live demo:** _coming soon_
-
----
-
-## Quick Setup
-
-```bash
-npm install
-npm run dev       # dev server at http://localhost:5173
-npm run build     # production build → dist/
-npm run test      # run Vitest tests
-npm run lint      # ESLint check
-npm run preview   # preview production build locally
-```
-
-Requires **Node 18+**.
+🌐 **[Live Demo](https://username.github.io/portfolio/)** ← replace with your URL
 
 ---
 
@@ -27,80 +12,46 @@ Requires **Node 18+**.
 |-------|-----------|
 | Framework | React 19 + Vite 7 |
 | 3D Graphics | Three.js + @react-three/fiber + @react-three/drei |
-| Animations | GSAP 3 |
+| Animations | GSAP 3 (ScrollTrigger) |
 | Styling | Tailwind CSS 4 |
 | Testing | Vitest + @testing-library/react |
-| CI/CD | GitHub Actions |
+| CI/CD | GitHub Actions → GitHub Pages |
 
----
+## Sections
 
-## Component Architecture
+- **Hero** — Immersive Three.js space scene with cosmic text entrance
+- **About** — Bio + tech stack with scroll animations
+- **Experience** — Timeline with GSAP-animated cards
+- **Projects** — 3D tilt grid with glow effects
+- **Contact** — Social links (GitHub, LinkedIn, Email)
 
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Run tests
+npm test
+
+# Production build
+npm run build
 ```
-src/
-  animations/          ← ANIMATIONS LAYER (GSAP + Three.js logic)
-    index.js           ← barrel export — UI imports from here only
-    hero.animations.js
-  components/          ← UI LAYER (React components)
-    Hero.jsx
-    About/
-      About.jsx
-      About.test.jsx
-  contracts/           ← SHARED INTERFACE (read by any layer)
-    animations.contract.js
-    hero.contract.js
-  features/            ← Feature planning docs (markdown only)
-  App.jsx
-  main.jsx
-  index.css
-```
 
----
+## Updating Content
 
-## Multi-Agent Development
+Edit the files in `src/data/`:
+- `src/data/profile.js` — name, bio, social links
+- `src/data/experience.js` — work history
+- `src/data/projects.js` — portfolio projects
 
-This project uses a **layer-based architecture** that lets multiple AI agents work in
-parallel without conflicts. Each agent owns a specific layer and a dedicated Git worktree.
+## Architecture
 
-| Agent | Layer | Worktree | Branch |
-|-------|-------|----------|--------|
-| Animations Agent | Animations | `worktrees/layer-animations` | `layer/animations` |
-| UI Agent | UI | `worktrees/layer-ui` | `layer/ui` |
-| CI/CD Agent | CI/CD | `worktrees/layer-cicd` | `layer/cicd` |
-| Docs Agent | Docs | `worktrees/layer-docs` | `layer/docs` |
+See [`docs/architecture.md`](docs/architecture.md) for the multi-agent layer architecture.
 
-**Full documentation:**
-- [`docs/architecture.md`](docs/architecture.md) — layer ownership rules and communication patterns
-- [`docs/TASK-DEPENDENCIES.md`](docs/TASK-DEPENDENCIES.md) — merge order and worktree setup
+## License
 
----
-
-## Code Conventions
-
-### Naming
-- Components: `PascalCase` (`Hero.jsx`, `About.jsx`)
-- Hooks: `camelCase` prefixed with `use` (`useGSAPTimeline.js`)
-- Animation functions: `camelCase` verb phrase (`initHeroEntrance`, `playScrollReveal`)
-- CSS classes: Tailwind utilities only; no custom classes unless unavoidable
-
-### Adding a New Section
-1. Create `src/components/SectionName/SectionName.jsx`
-2. Create `src/components/SectionName/SectionName.test.jsx` with at least one render test
-3. Lazy-load it in `App.jsx` via `React.lazy()`
-4. Add a `<section id="section-name">` anchor and a nav link
-
-### Animation Rule
-Never write GSAP or Three.js logic inside a component file. Add a function to
-`src/animations/` and call it from the component via `useEffect`.
-
----
-
-## Project Status
-
-| Section | Status |
-|---------|--------|
-| Hero (3D box + entrance animation) | ✅ Done |
-| About | 🔄 Placeholder |
-| Experience | ⏳ Planned |
-| Projects | ⏳ Planned |
-| Contact | ⏳ Planned |
+MIT

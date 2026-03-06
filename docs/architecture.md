@@ -8,6 +8,7 @@ authoritative reference for layer ownership and coordination rules.
 
 | Layer | Owns | Does NOT touch |
 |-------|------|----------------|
+| **Data** | `src/data/` | Component JSX, animations, CI config |
 | **Animations** | `src/animations/`, `src/contracts/animations.contract.js` | Component JSX, CI config |
 | **UI** | `src/components/`, `src/App.jsx`, `src/index.css` | GSAP/Three.js logic, CI config |
 | **CI/CD** | `.github/workflows/`, `vite.config.js`, `package.json` | Source code, docs |
@@ -20,8 +21,7 @@ Layers communicate through **interface contracts** in `src/contracts/`:
 - `src/contracts/animations.contract.js` — defines named animation IDs and function signatures
 - `src/contracts/hero.contract.js` — defines Hero component props and default values
 
-**Rule:** If you need something from another layer, look in `src/contracts/` first.
-If the contract doesn't cover your case, update the contract and note it in your PR.
+The **Data layer** (`src/data/`) acts as a single source of truth for all content. UI components import directly from `src/data/index.js`. Never hard-code content in component files.
 
 ## The No-Conflict Rules
 
@@ -47,6 +47,17 @@ If the contract doesn't cover your case, update the contract and note it in your
 2. Export it from `src/animations/index.js`
 3. If the animation introduces a new named ID, add it to `src/contracts/animations.contract.js`
 4. The UI agent will call the function — do not call it yourself from animation files
+
+## Components
+
+| Component | Section ID | Data Source |
+|-----------|-----------|-------------|
+| `Navbar` | — | `profile.name` |
+| `Hero` | `#hero` | `profile.name`, `profile.title`, `profile.tagline` |
+| `About` | `#about` | `profile.bio`, `profile.techStack` |
+| `Experience` | `#experience` | `experience[]` |
+| `Projects` | `#projects` | `projects[]` |
+| `Contact` | `#contact` | `profile.social`, `profile.email` |
 
 ## Worktree Setup
 
