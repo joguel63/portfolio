@@ -5,6 +5,8 @@ describe('hero animations', () => {
     expect(typeof initHeroEntrance).toBe('function')
   })
 
+  // jsdom doesn't run CSSPlugin, so GSAP logs "Invalid property" warnings —
+  // this is expected. The tween is still queued (getChildren().length === 1).
   it('initHeroEntrance returns a GSAP timeline with one tween', () => {
     const fakeRef = { current: { style: {} } }
     const tl = initHeroEntrance(fakeRef)

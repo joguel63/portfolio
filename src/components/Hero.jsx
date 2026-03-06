@@ -25,7 +25,7 @@ export default function Hero({ boxColor, className = '' }) {
   }, [])
 
   return (
-    <section ref={heroRef} className={`${HERO_DEFAULTS.canvasHeight} ${className}`}>
+    <section ref={heroRef} className={[HERO_DEFAULTS.canvasHeight, className].filter(Boolean).join(' ')}>
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
