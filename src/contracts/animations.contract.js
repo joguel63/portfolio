@@ -17,5 +17,5 @@ export const ANIMATION_IDS = Object.freeze({
  * Signature contract for animation functions.
  * Every function in src/animations/ must match this shape:
  *
- * @typedef {function(React.RefObject): gsap.core.Timeline} AnimationFn
+ * @typedef {function(React.RefObject<HTMLElement>): gsap.core.Timeline} AnimationFn
  */

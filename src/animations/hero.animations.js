@@ -3,7 +3,9 @@ import { ANIMATION_IDS } from '../contracts/animations.contract.js'
 
 /**
  * Animates the hero section entrance.
- * @type {import('../contracts/animations.contract.js').AnimationFn}
+ * @param {React.RefObject<HTMLElement>} heroRef - ref attached to the .hero element
+ * @returns {gsap.core.Timeline}
+ * @see {import('../contracts/animations.contract.js').AnimationFn}
  */
 export function initHeroEntrance(heroRef) {
   const tl = gsap.timeline({ id: ANIMATION_IDS.HERO_ENTRANCE })
