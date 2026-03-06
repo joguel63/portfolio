@@ -18,8 +18,8 @@ describe('contracts', () => {
 
   it('HERO_DEFAULTS exports expected shape and values', () => {
     expect(HERO_DEFAULTS).toHaveProperty('canvasHeight', 'h-screen')
-    expect(HERO_DEFAULTS).toHaveProperty('boxColor', 'orange')
-    expect(HERO_DEFAULTS).toHaveProperty('entranceDuration', 1)
+    expect(HERO_DEFAULTS).toHaveProperty('boxColor', '#00f5ff')
+    expect(HERO_DEFAULTS).toHaveProperty('entranceDuration', 1.2)
     expect(typeof HERO_DEFAULTS.entranceDuration).toBe('number')
   })
 

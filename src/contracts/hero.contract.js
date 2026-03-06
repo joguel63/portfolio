@@ -7,14 +7,12 @@
  * - Neither layer accesses the other's internals directly.
  */
 
-/** Default configuration values for the Hero component. */
 export const HERO_DEFAULTS = Object.freeze({
-  /** CSS height class applied to the hero section */
   canvasHeight: 'h-screen',
-  /** Default color for the rotating 3D box */
-  boxColor: 'orange',
-  /** Duration in seconds for the entrance animation */
-  entranceDuration: 1,
+  boxColor: '#00f5ff',
+  entranceDuration: 1.2,
+  starsCount: 5000,
+  starsRadius: 100,
 })
 
 /**
