@@ -2,7 +2,7 @@ import { useState, lazy, Suspense } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-
+import Hero from "./components/Hero.jsx";
 const About = lazy(() => import("./components/About/About"));
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
       <nav className="p-4">
         <a href="#about" className="mr-4">About</a>
       </nav>
+      <Hero />
       <div>
         <a href="https://vite.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
