@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import gsap from 'gsap'
+import { initHeroEntrance } from '../animations/index.js'
+import { HERO_DEFAULTS } from '../contracts/hero.contract.js'
 
-function Box() {
+function Box({ color = HERO_DEFAULTS.boxColor }) {
   const ref = useRef()
   useFrame(() => {
     if (ref.current) ref.current.rotation.y += 0.01
@@ -10,24 +11,25 @@ function Box() {
   return (
     <mesh ref={ref}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="orange" />
+      <meshStandardMaterial color={color} />
     </mesh>
   )
 }
 
-export default function Hero() {
+export default function Hero({ boxColor, className = '' }) {
+  const heroRef = useRef(null)
+
   useEffect(() => {
-    const tl = gsap.timeline()
-    tl.from('.hero', { opacity: 0, y: -20, duration: 1 })
+    const tl = initHeroEntrance(heroRef)
     return () => tl.kill()
   }, [])
 
   return (
-    <section className="hero h-screen">
+    <section ref={heroRef} className={`${HERO_DEFAULTS.canvasHeight} ${className}`}>
       <Canvas>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <Box />
+        <Box color={boxColor} />
       </Canvas>
     </section>
   )
