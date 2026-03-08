@@ -26,7 +26,7 @@ export default function Navbar() {
           if (entry.isIntersecting) setActive(entry.target.id)
         })
       },
-      { threshold: 0.5 }
+      { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' }
     )
     sections.forEach((s) => observer.observe(s))
     return () => observer.disconnect()
@@ -68,6 +68,16 @@ export default function Navbar() {
                   ? 'var(--color-accent-cyan)'
                   : 'var(--color-text-muted)',
                 fontFamily: 'var(--font-mono)',
+              }}
+              onMouseEnter={(e) => {
+                if (active !== href.slice(1)) {
+                  e.currentTarget.style.color = 'var(--color-text-primary)'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (active !== href.slice(1)) {
+                  e.currentTarget.style.color = 'var(--color-text-muted)'
+                }
               }}
             >
               {label}
