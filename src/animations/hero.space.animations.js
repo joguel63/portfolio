@@ -11,8 +11,10 @@ export function initSpaceHeroEntrance(heroRef) {
   if (!heroRef?.current) return null
 
   // Set initial states BEFORE creating the timeline
-  gsap.set('.hero-char', { opacity: 0 })
-  gsap.set('.hero-fade', { opacity: 0 })
+  gsap.set(heroRef.current.querySelectorAll('.hero-char'), { opacity: 0 })
+  gsap.set(heroRef.current.querySelectorAll('.hero-fade'), { opacity: 0 })
+  const canvas = heroRef.current.querySelector('canvas')
+  if (canvas) gsap.set(canvas, { opacity: 0 })
 
   const tl = gsap.timeline({ id: ANIMATION_IDS.HERO_ENTRANCE })
 
