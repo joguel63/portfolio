@@ -19,6 +19,7 @@ function ProjectCard({ project }) {
       rotateX: -y * 10,
       duration: 0.3,
       ease: 'power2.out',
+      overwrite: 'auto',
     })
   }, [])
 
@@ -28,6 +29,7 @@ function ProjectCard({ project }) {
       rotateX: 0,
       duration: 0.5,
       ease: 'elastic.out(1, 0.5)',
+      overwrite: 'auto',
     })
   }, [])
 

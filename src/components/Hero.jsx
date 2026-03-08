@@ -47,10 +47,10 @@ function SplitText({ text, className }) {
 export default function Hero() {
   const heroRef = useRef(null)
   const scrollProgressRef = useRef(0)
+  const animationTlRef = useRef(null)
 
   useEffect(() => {
-    const tl = initSpaceHeroEntrance(heroRef)
-    return () => tl?.kill()
+    return () => animationTlRef.current?.kill()
   }, [])
 
   useEffect(() => {
@@ -73,6 +73,9 @@ export default function Hero() {
         <Canvas
           camera={{ position: [0, 0, 1], fov: 75 }}
           style={{ background: 'transparent', width: '100%', height: '100%' }}
+          onCreated={() => {
+            animationTlRef.current = initSpaceHeroEntrance(heroRef)
+          }}
         >
           <SpaceScene scrollProgressRef={scrollProgressRef} />
         </Canvas>
