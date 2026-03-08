@@ -264,18 +264,18 @@ Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
 
 ```js
 export const profile = {
-  name: 'Tu Nombre',           // ← replace with your real name
+  name: 'Miguel Muñoz',           // ← replace with your real name
   title: 'Full-Stack Developer',
   tagline: 'Building digital experiences that live between frontend and backend.',
   bio: [
     'Desarrollador Full-Stack con pasión por crear aplicaciones web modernas, escalables y con interfaces atractivas.',
     'Especializado en React, Node.js y arquitecturas cloud. Me enfoco en escribir código limpio y bien testeado.',
   ],
-  location: 'Tu Ciudad, País',  // ← replace
-  email: 'tu@email.com',         // ← replace
+  location: 'Cucuta, Colombia',  // ← replace
+  email: 'joguel63@email.com',         // ← replace
   social: {
-    github: 'https://github.com/tu-usuario',    // ← replace
-    linkedin: 'https://linkedin.com/in/tu-usuario', // ← replace
+    github: 'https://github.com/joguel63',    // ← replace
+    linkedin: 'https://www.linkedin.com/in/jose-miguel-mu%C3%B1oz-velasco', // ← replace
   },
   techStack: [
     { name: 'React', color: '#61dafb' },

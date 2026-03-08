@@ -26,3 +26,8 @@ dist-ssr
 # Git worktrees
 worktrees/
 .worktrees/
+
+#ia
+.github/prompts
+.claude
+/incidents
