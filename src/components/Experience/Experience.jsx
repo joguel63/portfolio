@@ -14,6 +14,7 @@ function ExperienceCard({ item, index }) {
       style={{ gap: '2rem', marginBottom: '4rem' }}
     >
       <div
+        aria-hidden="true"
         className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center w-4 h-4 rounded-full border-2 mt-2"
         style={{
           borderColor: 'var(--color-accent-cyan)',
@@ -48,12 +49,12 @@ function ExperienceCard({ item, index }) {
               {item.company}
             </p>
           </div>
-          <span
+          <time
             className="font-mono text-xs ml-4 whitespace-nowrap"
             style={{ color: 'var(--color-text-muted)' }}
           >
             {item.period}
-          </span>
+          </time>
         </div>
 
         <p
@@ -101,17 +102,36 @@ export default function Experience() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.experience-card', {
-        opacity: 0,
-        x: (i) => (i % 2 === 0 ? -60 : 60),
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          once: true,
-        },
+      const mm = gsap.matchMedia()
+
+      mm.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.experience-card', {
+          opacity: 0,
+          x: (i) => (i % 2 === 0 ? -60 : 60),
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 75%',
+            once: true,
+          },
+        })
+      })
+
+      mm.add('(max-width: 767px) and (prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.experience-card', {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 75%',
+            once: true,
+          },
+        })
       })
     }, sectionRef)
 
@@ -122,18 +142,21 @@ export default function Experience() {
     <section
       id="experience"
       ref={sectionRef}
+      aria-labelledby="experience-heading"
       className="min-h-screen py-24 px-6"
-      style={{ backgroundColor: 'var(--color-bg-primary)', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+      style={{ backgroundColor: 'var(--color-bg-primary)' }}
     >
       <div className="max-w-5xl mx-auto" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-16">
           <span
+            aria-hidden="true"
             className="font-mono text-sm"
             style={{ color: 'var(--color-accent-cyan)' }}
           >
             02.
           </span>
           <h2
+            id="experience-heading"
             className="font-display font-bold"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: 'var(--color-text-primary)' }}
           >
@@ -147,6 +170,7 @@ export default function Experience() {
 
         <div className="relative">
           <div
+            aria-hidden="true"
             className="absolute left-1/2 top-0 bottom-0 w-px hidden md:block"
             style={{ backgroundColor: 'rgba(0,245,255,0.15)' }}
           />
