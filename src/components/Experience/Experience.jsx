@@ -11,6 +11,7 @@ function ExperienceCard({ item, index }) {
   return (
     <div
       className={`experience-card relative flex ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-8 mb-16`}
+      style={{ flexDirection: isLeft ? 'row' : 'row-reverse', gap: '2rem', marginBottom: '4rem' }}
     >
       <div
         className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center w-4 h-4 rounded-full border-2 mt-2"
@@ -18,6 +19,10 @@ function ExperienceCard({ item, index }) {
           borderColor: 'var(--color-accent-cyan)',
           backgroundColor: 'var(--color-bg-primary)',
           boxShadow: '0 0 12px rgba(0,245,255,0.5)',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          width: '1rem',
+          height: '1rem',
         }}
       />
 
@@ -137,7 +142,7 @@ export default function Experience() {
           </h2>
           <div
             className="flex-1 h-px ml-4"
-            style={{ backgroundColor: 'rgba(0,245,255,0.2)' }}
+            style={{ backgroundColor: 'rgba(0,245,255,0.2)', flexGrow: 1 }}
           />
         </div>
 
