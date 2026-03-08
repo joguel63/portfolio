@@ -10,17 +10,19 @@ export default function About() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.about-animate', {
-        opacity: 0,
-        y: 50,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          once: true,
-        },
+      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.about-animate', {
+          opacity: 0,
+          y: 50,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            once: true,
+          },
+        })
       })
     }, sectionRef)
 
@@ -31,18 +33,21 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="min-h-screen flex items-center py-24 px-6"
-      style={{ backgroundColor: 'var(--color-bg-secondary)', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+      aria-labelledby="about-heading"
+      className="md:min-h-screen flex items-center py-12 md:py-24 px-4 md:px-6"
+      style={{ backgroundColor: 'var(--color-bg-secondary)' }}
     >
       <div className="max-w-5xl mx-auto w-full" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-12 about-animate">
           <span
+            aria-hidden="true"
             className="font-mono text-sm"
             style={{ color: 'var(--color-accent-cyan)' }}
           >
             01.
           </span>
           <h2
+            id="about-heading"
             className="font-display font-bold"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: 'var(--color-text-primary)' }}
           >
@@ -70,27 +75,28 @@ export default function About() {
           </div>
 
           <div className="about-animate">
-            <p
+            <h3
               className="font-mono text-sm mb-6 uppercase tracking-widest"
               style={{ color: 'var(--color-accent-cyan)' }}
             >
               Tech Stack
-            </p>
-            <div className="flex flex-wrap gap-3">
+            </h3>
+            <ul className="flex flex-wrap gap-3" style={{ listStyle: 'none' }}>
               {profile.techStack.map(({ name, color }) => (
-                <span
-                  key={name}
-                  className="font-mono text-sm px-3 py-1 rounded border transition-all duration-200"
-                  style={{
-                    borderColor: `${color}40`,
-                    color: color,
-                    backgroundColor: `${color}10`,
-                  }}
-                >
-                  {name}
-                </span>
+                <li key={name}>
+                  <span
+                    className="font-mono text-sm px-3 py-1 rounded border transition-all duration-200"
+                    style={{
+                      borderColor: `${color}40`,
+                      color: color,
+                      backgroundColor: `${color}10`,
+                    }}
+                  >
+                    {name}
+                  </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
