@@ -10,6 +10,10 @@ import { ANIMATION_IDS } from '../contracts/animations.contract.js'
 export function initSpaceHeroEntrance(heroRef) {
   if (!heroRef?.current) return null
 
+  // Set initial states BEFORE creating the timeline
+  gsap.set('.hero-char', { opacity: 0 })
+  gsap.set('.hero-fade', { opacity: 0 })
+
   const tl = gsap.timeline({ id: ANIMATION_IDS.HERO_ENTRANCE })
 
   tl.from(heroRef.current.querySelector('canvas'), {

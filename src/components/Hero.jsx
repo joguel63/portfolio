@@ -69,10 +69,10 @@ export default function Hero() {
       className="relative h-screen w-full overflow-hidden flex items-center justify-center"
       style={{ backgroundColor: 'var(--color-bg-primary)' }}
     >
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" style={{ width: '100%', height: '100%' }}>
         <Canvas
           camera={{ position: [0, 0, 1], fov: 75 }}
-          style={{ background: 'transparent' }}
+          style={{ background: 'transparent', width: '100%', height: '100%' }}
         >
           <SpaceScene scrollProgressRef={scrollProgressRef} />
         </Canvas>
