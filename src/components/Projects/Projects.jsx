@@ -24,6 +24,10 @@ function ProjectCard({ project }) {
   }, [])
 
   const handleMouseLeave = useCallback(() => {
+    if (cardRef.current) {
+      cardRef.current.style.borderColor = 'rgba(0,245,255,0.15)'
+      cardRef.current.style.boxShadow = 'none'
+    }
     gsap.to(cardRef.current, {
       rotateY: 0,
       rotateX: 0,
