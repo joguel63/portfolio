@@ -35,17 +35,19 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.contact-animate', {
-        opacity: 0,
-        y: 40,
-        stagger: 0.2,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          once: true,
-        },
+      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.contact-animate', {
+          opacity: 0,
+          y: 40,
+          stagger: 0.2,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            once: true,
+          },
+        })
       })
     }, sectionRef)
 
@@ -77,6 +79,7 @@ export default function Contact() {
       <div className="relative z-10 text-center max-w-2xl mx-auto" style={{ maxWidth: '42rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-12 justify-center contact-animate">
           <span
+            aria-hidden="true"
             className="font-mono text-sm"
             style={{ color: 'var(--color-accent-cyan)' }}
           >
@@ -104,7 +107,7 @@ export default function Contact() {
           No dudes en contactarme.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 contact-animate" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap contact-animate">
           {SOCIAL_LINKS.map(({ label, href, Icon }) => (
             <a
               key={label}
@@ -136,6 +139,13 @@ export default function Contact() {
             </a>
           ))}
         </div>
+
+        <p
+          className="mt-4 contact-animate font-mono text-xs"
+          style={{ color: 'var(--color-text-muted)' }}
+        >
+          {profile.email}
+        </p>
 
         <p
           className="mt-16 contact-animate font-mono text-xs"
