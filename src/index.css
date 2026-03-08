@@ -6,7 +6,7 @@
   --color-accent-cyan: #00f5ff;
   --color-accent-purple: #8b5cf6;
   --color-text-primary: #e2e8f0;
-  --color-text-muted: #64748b;
+  --color-text-muted: #7b91a8;
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
@@ -66,6 +66,15 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Global keyboard focus ring */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
 /* Typography hierarchy */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -77,4 +86,27 @@ code, pre {
 
 p {
   line-height: 1.75;
+}
+
+/* GSAP opacity:0 safety net — GSAP overrides at runtime; if GSAP fails content stays visible */
+.hero-char,
+.hero-fade,
+.about-animate,
+.experience-card,
+.project-card,
+.contact-animate {
+  opacity: 1;
+}
+
+/* Reduced-motion: disable all CSS animations/transitions.
+   GSAP animations are individually guarded with gsap.matchMedia(). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

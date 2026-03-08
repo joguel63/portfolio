@@ -50,7 +50,7 @@ export default function Hero() {
   const animationTlRef = useRef(null)
 
   useEffect(() => {
-    return () => animationTlRef.current?.kill()
+    return () => animationTlRef.current?.revert()
   }, [])
 
   useEffect(() => {
