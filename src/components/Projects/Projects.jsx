@@ -50,12 +50,19 @@ function ProjectCard({ project }) {
       }}
     >
       <div className="flex items-start justify-between mb-4">
-        <span
-          className="font-mono text-2xl"
-          style={{ color: 'var(--color-accent-cyan)' }}
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--color-accent-cyan)"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
         >
-          ⬡
-        </span>
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+        </svg>
         <div className="flex gap-4">
           <a
             href={project.github}
@@ -100,12 +107,18 @@ function ProjectCard({ project }) {
         {project.description}
       </p>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
         {project.tech.map((t) => (
           <span
             key={t}
-            className="font-mono text-xs"
-            style={{ color: 'var(--color-accent-purple)' }}
+            className="font-mono text-xs px-2 py-0.5 rounded"
+            style={{
+              backgroundColor: 'rgba(139,92,246,0.15)',
+              color: 'var(--color-accent-purple)',
+              border: '1px solid rgba(139,92,246,0.3)',
+              padding: '0.125rem 0.5rem',
+              borderRadius: '0.25rem',
+            }}
           >
             {t}
           </span>
@@ -160,13 +173,13 @@ export default function Projects() {
           </h2>
           <div
             className="flex-1 h-px ml-4"
-            style={{ backgroundColor: 'rgba(0,245,255,0.2)' }}
+            style={{ backgroundColor: 'rgba(0,245,255,0.2)', flexGrow: 1 }}
           />
         </div>
 
         <div
           className="grid gap-6"
-          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}
+          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}
         >
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
