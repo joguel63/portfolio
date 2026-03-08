@@ -18,11 +18,13 @@ export function initSpaceHeroEntrance(heroRef) {
 
   const tl = gsap.timeline({ id: ANIMATION_IDS.HERO_ENTRANCE })
 
-  tl.from(heroRef.current.querySelector('canvas'), {
-    opacity: 0,
-    duration: 2,
-    ease: 'power2.out',
-  }, 0)
+  if (canvas) {
+    tl.from(canvas, {
+      opacity: 0,
+      duration: 2,
+      ease: 'power2.out',
+    }, 0)
+  }
 
   tl.from(heroRef.current.querySelectorAll('.hero-char'), {
     opacity: 0,
