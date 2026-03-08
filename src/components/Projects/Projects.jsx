@@ -9,6 +9,7 @@ function ProjectCard({ project }) {
   const cardRef = useRef(null)
 
   const handleMouseMove = useCallback((e) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const card = cardRef.current
     if (!card) return
     const rect = card.getBoundingClientRect()
@@ -40,6 +41,8 @@ function ProjectCard({ project }) {
   return (
     <div
       ref={cardRef}
+      role="article"
+      aria-label={project.title}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="project-card p-6 rounded-lg border flex flex-col group"
@@ -48,7 +51,7 @@ function ProjectCard({ project }) {
         borderColor: 'rgba(0,245,255,0.15)',
         transformStyle: 'preserve-3d',
         transition: 'border-color 0.3s, box-shadow 0.3s',
-        cursor: 'default',
+        cursor: 'pointer',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = 'rgba(0,245,255,0.5)'
@@ -74,7 +77,7 @@ function ProjectCard({ project }) {
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub"
+            aria-label={`GitHub repository for ${project.title}`}
             className="font-mono text-xs transition-colors duration-200"
             style={{ color: 'var(--color-text-muted)' }}
             onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent-cyan)' }}
@@ -87,7 +90,7 @@ function ProjectCard({ project }) {
               href={project.live}
               target="_blank"
               rel="noreferrer"
-              aria-label="Live demo"
+              aria-label={`Live demo for ${project.title}`}
               className="font-mono text-xs transition-colors duration-200"
               style={{ color: 'var(--color-text-muted)' }}
               onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent-cyan)' }}
@@ -139,17 +142,19 @@ export default function Projects() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.project-card', {
-        opacity: 0,
-        y: 40,
-        stagger: 0.1,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          once: true,
-        },
+      gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.from('.project-card', {
+          opacity: 0,
+          y: 40,
+          stagger: 0.1,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 75%',
+            once: true,
+          },
+        })
       })
     }, sectionRef)
 
@@ -166,6 +171,7 @@ export default function Projects() {
       <div className="max-w-5xl mx-auto" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-16">
           <span
+            aria-hidden="true"
             className="font-mono text-sm"
             style={{ color: 'var(--color-accent-cyan)' }}
           >
