@@ -29,6 +29,13 @@ export default function Navbar() {
       { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' }
     )
     sections.forEach((s) => observer.observe(s))
+    // One-time scan for sections already in viewport on load
+    sections.forEach((s) => {
+      const rect = s.getBoundingClientRect()
+      if (rect.top >= 0 && rect.top <= window.innerHeight * 0.4) {
+        setActive(s.id)
+      }
+    })
     return () => observer.disconnect()
   }, [])
 
