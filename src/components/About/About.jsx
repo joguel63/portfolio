@@ -50,11 +50,14 @@ export default function About() {
           </h2>
           <div
             className="flex-1 h-px ml-4"
-            style={{ backgroundColor: 'rgba(0,245,255,0.2)' }}
+            style={{ backgroundColor: 'rgba(0,245,255,0.2)', flexGrow: 1 }}
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16">
+        <div
+          className="grid md:grid-cols-2 gap-16"
+          style={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '4rem' }}
+        >
           <div className="space-y-4 about-animate">
             {profile.bio.map((paragraph, i) => (
               <p
