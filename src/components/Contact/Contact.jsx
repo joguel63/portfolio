@@ -59,7 +59,7 @@ export default function Contact() {
       id="contact"
       ref={sectionRef}
       className="min-h-screen flex items-center justify-center py-24 px-6 relative overflow-hidden"
-      style={{ backgroundColor: 'var(--color-bg-primary)', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+      style={{ backgroundColor: 'var(--color-bg-primary)' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"

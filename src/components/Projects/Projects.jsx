@@ -166,7 +166,7 @@ export default function Projects() {
       id="projects"
       ref={sectionRef}
       className="min-h-screen py-24 px-6"
-      style={{ backgroundColor: 'var(--color-bg-secondary)', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
+      style={{ backgroundColor: 'var(--color-bg-secondary)' }}
     >
       <div className="max-w-5xl mx-auto" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-16">

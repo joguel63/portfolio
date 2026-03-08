@@ -81,7 +81,7 @@ export default function About() {
             >
               Tech Stack
             </h3>
-            <ul className="flex flex-wrap gap-3" style={{ listStyle: 'none' }}>
+            <ul className="flex flex-wrap gap-3" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {profile.techStack.map(({ name, color }) => (
                 <li key={name}>
                   <span
