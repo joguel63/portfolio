@@ -65,3 +65,16 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+/* Typography hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+p {
+  line-height: 1.75;
+}
