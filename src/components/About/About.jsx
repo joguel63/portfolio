@@ -32,9 +32,9 @@ export default function About() {
       id="about"
       ref={sectionRef}
       className="min-h-screen flex items-center py-24 px-6"
-      style={{ backgroundColor: 'var(--color-bg-secondary)' }}
+      style={{ backgroundColor: 'var(--color-bg-secondary)', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
     >
-      <div className="max-w-5xl mx-auto w-full">
+      <div className="max-w-5xl mx-auto w-full" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-12 about-animate">
           <span
             className="font-mono text-sm"

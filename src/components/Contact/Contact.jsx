@@ -57,7 +57,7 @@ export default function Contact() {
       id="contact"
       ref={sectionRef}
       className="min-h-screen flex items-center justify-center py-24 px-6 relative overflow-hidden"
-      style={{ backgroundColor: 'var(--color-bg-primary)' }}
+      style={{ backgroundColor: 'var(--color-bg-primary)', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -74,7 +74,7 @@ export default function Contact() {
         }
       `}</style>
 
-      <div className="relative z-10 text-center max-w-2xl mx-auto">
+      <div className="relative z-10 text-center max-w-2xl mx-auto" style={{ maxWidth: '42rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-12 justify-center contact-animate">
           <span
             className="font-mono text-sm"

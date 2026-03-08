@@ -124,9 +124,9 @@ export default function Experience() {
       id="experience"
       ref={sectionRef}
       className="min-h-screen py-24 px-6"
-      style={{ backgroundColor: 'var(--color-bg-primary)' }}
+      style={{ backgroundColor: 'var(--color-bg-primary)', paddingTop: '6rem', paddingBottom: '6rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
         <div className="flex items-center gap-4 mb-16">
           <span
             className="font-mono text-sm"
