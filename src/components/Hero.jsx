@@ -66,11 +66,12 @@ export default function Hero() {
     <section
       id="hero"
       ref={heroRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      className="relative h-screen min-h-[100dvh] w-full overflow-hidden flex items-center justify-center"
       style={{ backgroundColor: 'var(--color-bg-primary)' }}
     >
       <div className="absolute inset-0" style={{ width: '100%', height: '100%' }}>
         <Canvas
+          aria-hidden="true"
           camera={{ position: [0, 0, 1], fov: 75 }}
           style={{ background: 'transparent', width: '100%', height: '100%' }}
           onCreated={() => {
@@ -90,8 +91,9 @@ export default function Hero() {
         </p>
 
         <h1
+          aria-label={`Hola, soy ${profile.name}`}
           className="font-display font-bold leading-none mb-4"
-          style={{ fontSize: 'clamp(3rem, 8vw, 7rem)', color: 'var(--color-text-primary)' }}
+          style={{ fontSize: 'clamp(2.5rem, 8vw, 7rem)', color: 'var(--color-text-primary)' }}
         >
           <SplitText text={profile.name} />
         </h1>
@@ -139,6 +141,7 @@ export default function Hero() {
       </div>
 
       <div
+        aria-hidden="true"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 hero-fade flex flex-col items-center gap-2"
         style={{ color: 'var(--color-text-muted)' }}
       >
