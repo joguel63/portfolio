@@ -62,3 +62,60 @@ The **Data layer** (`src/data/`) acts as a single source of truth for all conten
 ## Worktree Setup
 
 See `docs/TASK-DEPENDENCIES.md` for the full layer table and commands to create worktrees.
+
+## Visual Audit Workflow
+
+Use this workflow to detect visual regressions, layout issues, and UX problems
+in the live running app. It complements the static code audit in `docs/ux-audit/`.
+
+### When to Run
+
+- Before any release or deployment
+- After significant visual/animation changes
+- When a bug report mentions visual issues
+
+### How to Invoke
+
+Start the dev server if it isn't already running:
+
+```bash
+npm run dev
+```
+
+Then prompt Copilot CLI (in this project directory):
+
+> "Run a visual audit of the portfolio. Use Playwright MCP to capture screenshots
+> and video of http://localhost:5173/portfolio/ at desktop (1440px) and mobile (375px)
+> for all 5 sections (Hero, About, Experience, Projects, Contact). Save to
+> incidents/YYYYMMDD-HHmm/. Then analyze with ui-ux-pro-max and write findings.md
+> and plan.md inside the incident folder. Update incidents/README.md."
+
+### What Gets Generated
+
+```
+incidents/
+└── YYYYMMDD-HHmm/
+    ├── screenshots/          ← 10 PNG files (5 sections × 2 viewports)
+    ├── videos/               ← 2 WebM files (scroll-desktop.webm, scroll-mobile.webm)
+    ├── findings.md           ← Severity-tagged visual findings
+    └── plan.md               ← Prioritized fix plan
+```
+
+### How to Interpret Findings
+
+| Severity | Meaning | Action |
+|----------|---------|--------|
+| 🔴 Critical | Broken layout, WCAG AA violation, unreadable content | Fix before next release |
+| 🟡 Warning | UX degradation a user would notice | Fix in current sprint |
+| 🟢 Suggestion | Polish or improvement | Backlog |
+
+### Animation Limitation
+
+Screenshots capture a single frame. GSAP scroll-triggered animations may appear
+incomplete or mid-transition. Always review `videos/scroll-*.webm` manually for
+animation timing, jank, and transition smoothness. Flag animation issues as
+separate findings in the plan.
+
+### Closing an Incident
+
+See `incidents/README.md` for the full lifecycle and closure instructions.
