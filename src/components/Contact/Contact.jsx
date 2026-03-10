@@ -95,7 +95,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center py-24 px-6 relative overflow-hidden"
+      className="flex flex-col items-center justify-center pb-24 pt-20 md:pt-24 px-6 relative overflow-hidden scroll-mt-20"
       style={{ backgroundColor: 'var(--color-bg-primary)' }}
     >
       <div
@@ -103,6 +103,15 @@ export default function Contact() {
         style={{
           background: 'radial-gradient(ellipse at center, rgba(0,245,255,0.04) 0%, rgba(139,92,246,0.04) 50%, transparent 70%)',
           animation: 'pulse 4s ease-in-out infinite',
+        }}
+      />
+
+      <div
+        aria-hidden="true"
+        className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+        style={{
+          background: 'linear-gradient(90deg, transparent 0%, var(--color-accent-cyan) 50%, transparent 100%)',
+          opacity: 0.35,
         }}
       />
 

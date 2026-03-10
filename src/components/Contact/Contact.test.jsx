@@ -32,6 +32,12 @@ describe('Contact', () => {
     expect(document.querySelector('#contact')).toBeInTheDocument()
   })
 
+  it('has scroll-mt-20 for navbar offset', () => {
+    render(<Contact />)
+    const section = document.querySelector('#contact')
+    expect(section.className).toContain('scroll-mt-20')
+  })
+
   it('renders the contact form', () => {
     render(<Contact />)
     const form = document.querySelector('form[aria-label="Formulario de contacto"]')
