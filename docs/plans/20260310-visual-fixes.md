@@ -24,7 +24,7 @@
 
 | # | Finding | Section | File | Change Needed |
 |---|---------|---------|------|---------------|
-| F-6 | Three.js globe not rendering — hero shows star-field only | Hero (Both) | `src/components/Hero.jsx`, `src/animations/` | Debug `WebGLRenderer` init; verify canvas is appended to the DOM; test in a headed browser to distinguish WebGL headless limitation from a real bug. If headless-only, no code change needed — document as known limitation. |
+| F-6 | Three.js globe not rendering — hero shows star-field only | Hero (Both) | `src/components/Hero.jsx`, `src/animations/` | Debug `WebGLRenderer` init; verify canvas is appended to the DOM; test in a headed browser to distinguish WebGL headless limitation from a real bug. If headless-only, no code change needed — document as known limitation. **Critical* pending headed browser verification; downgrade to Warning if headless-only.** |
 | F-7 | About section: ≈ 50 % blank space above content on desktop | About (Desktop) | `src/components/About/About.jsx`, `src/index.css` | Reduce `section` `padding-top` / `min-height`; review GSAP `ScrollTrigger` pin configuration to avoid over-pinning. |
 | F-8 | Experience heading clips behind navbar; large blank area below cards on desktop | Experience (Desktop) | `src/components/Experience/Experience.jsx` | Add `scroll-margin-top` ≥ navbar height (~40 px) to `#experience`; reduce `min-height` or `padding-bottom` so blank space below cards is eliminated. |
 | F-9 | Projects section: ≈ 55 % blank viewport below card rows on desktop | Projects (Desktop) | `src/components/Projects/Projects.jsx` | Reduce `min-height` / `padding-bottom` on `#projects`; let the card grid define section height naturally. |
@@ -36,7 +36,7 @@
 
 | # | Finding | Section | File | Change Needed |
 |---|---------|---------|------|---------------|
-| F-11 | Mobile nav lacks hamburger / drawer — horizontal list truncates items | All (Mobile) | `src/components/Navbar/Navbar.jsx` | Implement hamburger toggle (`aria-expanded`, `aria-label="Open menu"`) + slide-in or full-screen nav drawer; close on link click or outside tap. |
+| F-11 | Mobile nav lacks hamburger / drawer — horizontal list truncates items | All (Mobile) | `src/components/Navbar/Navbar.jsx` | **Subsumed by F-1** — implementing F-1's hamburger drawer fully resolves this. No separate action needed. |
 | F-12 | All project cards use placeholder descriptions and names | Projects (Both) | `src/data/projects.js` | Replace placeholder strings with real project names, descriptions, tech stacks, GitHub URLs, and live demo URLs. |
 | F-13 | Contact section sparse on desktop after adding form | Contact (Desktop) | `src/components/Contact/Contact.jsx` | After form is added (F-5), recalibrate section `min-height`; consider a subtle decorative divider or background pattern at section top to avoid visual jump from Projects. |
 
@@ -48,6 +48,6 @@
 2. **F-2 + F-3 + F-4** — section scroll-margin fixes (parallel, same pattern)
 3. **F-10** — hero contrast (trivial, 1-line color change)
 4. **F-7 + F-8 + F-9** — section spacing cleanup (parallel)
-5. **F-5 + F-11** — contact form + hamburger nav (larger features)
+5. **F-5 + F-11** — contact form + hamburger nav (F-11 subsumed by F-1; only F-5 needs separate work)
 6. **F-6** — globe debug (investigation first)
 7. **F-12 + F-13** — content + polish
