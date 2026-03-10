@@ -7,9 +7,7 @@ captured by the Playwright MCP + ui-ux-pro-max workflow.
 
 | ID | Fecha | Estado | Findings | Plan |
 |----|-------|--------|----------|------|
-
 | 20260310-0939 | 2026-03-10 | open | [ver](./20260310-0939/findings.md) | [ver](../docs/plans/20260310-visual-fixes.md) |
-
 <!-- New rows are appended here by the orchestrator agent after each audit run -->
 
 ## Lifecycle
