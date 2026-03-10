@@ -1,4 +1,5 @@
-import { render, screen, fireEvent, within } from '@testing-library/react'
+import { render, screen, fireEvent, within, act } from '@testing-library/react'
+import { vi } from 'vitest'
 import Contact from './Contact'
 import { profile } from '../../data/index.js'
 
@@ -64,5 +65,36 @@ describe('Contact', () => {
     expect(nameInput.value).toBe('Miguel')
     expect(emailInput.value).toBe('miguel@test.com')
     expect(messageInput.value).toBe('Hola!')
+  })
+
+  it('shows success message after form submit', () => {
+    const mockLocation = { href: '' }
+    vi.stubGlobal('location', mockLocation)
+    render(<Contact />)
+    const form = document.querySelector('form[aria-label="Formulario de contacto"]')
+    fireEvent.change(within(form).getByLabelText('Nombre'), { target: { value: 'Ana' } })
+    fireEvent.change(within(form).getByLabelText('Email'), { target: { value: 'ana@x.com' } })
+    fireEvent.change(within(form).getByLabelText('Mensaje'), { target: { value: 'Hola' } })
+    fireEvent.submit(form)
+    expect(screen.getByRole('status')).toBeInTheDocument()
+    expect(mockLocation.href).toContain('mailto:')
+    vi.unstubAllGlobals()
+  })
+
+  it('resets form and hides success message after 3s', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal('location', { href: '' })
+    render(<Contact />)
+    const form = document.querySelector('form[aria-label="Formulario de contacto"]')
+    fireEvent.change(within(form).getByLabelText('Nombre'), { target: { value: 'Ana' } })
+    fireEvent.change(within(form).getByLabelText('Email'), { target: { value: 'ana@x.com' } })
+    fireEvent.change(within(form).getByLabelText('Mensaje'), { target: { value: 'Hola' } })
+    fireEvent.submit(form)
+    expect(screen.getByRole('status')).toBeInTheDocument()
+    await act(async () => { vi.advanceTimersByTime(3000) })
+    expect(screen.queryByRole('status')).not.toBeInTheDocument()
+    expect(within(form).getByLabelText('Nombre').value).toBe('')
+    vi.useRealTimers()
+    vi.unstubAllGlobals()
   })
 })

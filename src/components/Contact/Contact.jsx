@@ -32,6 +32,7 @@ const SOCIAL_LINKS = [
 
 export default function Contact() {
   const sectionRef = useRef(null)
+  const resetTimerRef = useRef(null)
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [focusedField, setFocusedField] = useState(null)
@@ -45,9 +46,10 @@ export default function Contact() {
     e.preventDefault()
     const subject = encodeURIComponent(`Contacto desde portfolio: ${formData.name}`)
     const body = encodeURIComponent(`Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`)
-    window.open(`mailto:${profile.email}?subject=${subject}&body=${body}`)
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
     setSubmitted(true)
-    setTimeout(() => {
+    clearTimeout(resetTimerRef.current)
+    resetTimerRef.current = setTimeout(() => {
       setSubmitted(false)
       setFormData({ name: '', email: '', message: '' })
     }, 3000)
@@ -83,7 +85,10 @@ export default function Contact() {
       })
     }, sectionRef)
 
-    return () => ctx.revert()
+    return () => {
+      ctx.revert()
+      clearTimeout(resetTimerRef.current)
+    }
   }, [])
 
   return (
