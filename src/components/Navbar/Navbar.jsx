@@ -47,6 +47,11 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false)
+    hamburgerRef.current?.focus()
+  }, [])
+
   // Escape key — close and restore focus
   useEffect(() => {
     if (!menuOpen) return
@@ -55,7 +60,7 @@ export default function Navbar() {
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [menuOpen])
+  }, [menuOpen, closeMenu])
 
   // Focus trap
   useEffect(() => {
@@ -81,11 +86,6 @@ export default function Navbar() {
     document.addEventListener('keydown', trap)
     return () => document.removeEventListener('keydown', trap)
   }, [menuOpen])
-
-  const closeMenu = useCallback(() => {
-    setMenuOpen(false)
-    hamburgerRef.current?.focus()
-  }, [])
 
   const handleNavClick = useCallback((e, href) => {
     e.preventDefault()

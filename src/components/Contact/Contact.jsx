@@ -251,13 +251,13 @@ export default function Contact() {
         </form>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap contact-animate">
-          {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+          {SOCIAL_LINKS.map((link) => (
             <a
-              key={label}
-              href={href(profile)}
-              target={label !== 'Email' ? '_blank' : undefined}
+              key={link.label}
+              href={link.href(profile)}
+              target={link.label !== 'Email' ? '_blank' : undefined}
               rel="noreferrer"
-              aria-label={label}
+              aria-label={link.label}
               className="flex items-center gap-3 px-8 py-4 rounded-lg border font-mono text-sm font-medium w-full sm:w-auto justify-center transition-all duration-300"
               style={{
                 borderColor: 'rgba(0,245,255,0.2)',
@@ -277,8 +277,8 @@ export default function Contact() {
                 e.currentTarget.style.backgroundColor = 'rgba(0,245,255,0.03)'
               }}
             >
-              <Icon />
-              {label}
+              <link.Icon />
+              {link.label}
             </a>
           ))}
         </div>
