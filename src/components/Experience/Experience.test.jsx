@@ -26,4 +26,11 @@ describe('Experience', () => {
     render(<Experience />)
     expect(document.querySelector('#experience')).toBeInTheDocument()
   })
+
+  it('section has scroll-margin and padding-top for mobile navbar clearance', () => {
+    render(<Experience />)
+    const section = document.getElementById('experience')
+    expect(section.className).toMatch(/scroll-mt-20/)
+    expect(section.className).toMatch(/pt-20/)
+  })
 })
