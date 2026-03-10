@@ -34,7 +34,7 @@ export default function About() {
       id="about"
       ref={sectionRef}
       aria-labelledby="about-heading"
-      className="md:min-h-screen flex items-center py-12 md:py-24 px-4 md:px-6 scroll-mt-20 pt-20"
+      className="flex flex-col py-12 md:py-24 px-4 md:px-6 scroll-mt-20 pt-20 md:pt-24"
       style={{ backgroundColor: 'var(--color-bg-secondary)' }}
     >
       <div className="max-w-5xl mx-auto w-full" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
