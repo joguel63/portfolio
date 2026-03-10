@@ -51,10 +51,7 @@ export default function Navbar() {
   useEffect(() => {
     if (!menuOpen) return
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setMenuOpen(false)
-        hamburgerRef.current?.focus()
-      }
+      if (e.key === 'Escape') closeMenu()
     }
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
