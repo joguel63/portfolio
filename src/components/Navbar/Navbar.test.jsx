@@ -31,6 +31,17 @@ describe('Navbar', () => {
     expect(screen.getByRole('button', { name: /close menu/i })).toBeInTheDocument()
   })
 
+  it('close button inside drawer closes the drawer and returns focus to hamburger', () => {
+    render(<Navbar />)
+    const hamburger = screen.getByRole('button', { name: /open menu/i })
+    fireEvent.click(hamburger)
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    const closeBtn = screen.getByRole('button', { name: /close menu/i })
+    fireEvent.click(closeBtn)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(document.activeElement).toBe(hamburger)
+  })
+
   it('mobile drawer closes when a nav link is clicked', () => {
     render(<Navbar />)
     fireEvent.click(screen.getByRole('button', { name: /open menu/i }))
