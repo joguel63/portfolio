@@ -991,9 +991,9 @@ export default function About() {
                   key={name}
                   className="font-mono text-sm px-3 py-1 rounded border transition-all duration-200"
                   style={{
-                    borderColor: `${color}40`,
-                    color: color,
-                    backgroundColor: `${color}10`,
+                    borderColor: "{{ color }}40",
+                    color: "{{ color }}",
+                    backgroundColor: "{{ color }}10",
                   }}
                 >
                   {name}
