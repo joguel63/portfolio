@@ -110,7 +110,7 @@ export default function Hero() {
 
         <p
           className="hero-fade max-w-xl mx-auto mb-10 text-base"
-          style={{ color: 'var(--color-text-muted)' }}
+          style={{ color: 'rgba(255,255,255,0.72)' }}
         >
           {profile.tagline}
         </p>

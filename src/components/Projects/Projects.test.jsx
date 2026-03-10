@@ -25,4 +25,11 @@ describe('Projects', () => {
     render(<Projects />)
     expect(document.querySelector('#projects')).toBeInTheDocument()
   })
+
+  it('section has scroll-margin and padding-top for mobile navbar clearance', () => {
+    render(<Projects />)
+    const section = document.getElementById('projects')
+    expect(section.className).toMatch(/scroll-mt-20/)
+    expect(section.className).toMatch(/pt-20/)
+  })
 })

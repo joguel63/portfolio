@@ -143,7 +143,7 @@ export default function Experience() {
       id="experience"
       ref={sectionRef}
       aria-labelledby="experience-heading"
-      className="min-h-screen py-24 px-6"
+      className="min-h-screen py-24 px-6 scroll-mt-20 pt-20"
       style={{ backgroundColor: 'var(--color-bg-primary)' }}
     >
       <div className="max-w-5xl mx-auto" style={{ maxWidth: '64rem', margin: '0 auto', width: '100%' }}>
