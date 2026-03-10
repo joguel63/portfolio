@@ -1,0 +1,16 @@
+﻿2026-03-10T17:23:44.1460337Z ##[group]Run npm ci
+2026-03-10T17:23:44.1460615Z [36;1mnpm ci[0m
+2026-03-10T17:23:44.1522999Z shell: /usr/bin/bash -e {0}
+2026-03-10T17:23:44.1523291Z ##[endgroup]
+2026-03-10T17:23:44.9291332Z npm warn EBADENGINE Unsupported engine {
+2026-03-10T17:23:44.9318071Z npm warn EBADENGINE   package: 'camera-controls@3.1.2',
+2026-03-10T17:23:44.9319025Z npm warn EBADENGINE   required: { node: '>=22.0.0', npm: '>=10.5.1' },
+2026-03-10T17:23:44.9319966Z npm warn EBADENGINE   current: { node: 'v20.20.0', npm: '10.8.2' }
+2026-03-10T17:23:44.9320611Z npm warn EBADENGINE }
+2026-03-10T17:23:51.3307069Z 
+2026-03-10T17:23:51.3309461Z added 319 packages, and audited 320 packages in 7s
+2026-03-10T17:23:51.3309924Z 
+2026-03-10T17:23:51.3310225Z 60 packages are looking for funding
+2026-03-10T17:23:51.3310761Z   run `npm fund` for details
+2026-03-10T17:23:51.3326230Z 
+2026-03-10T17:23:51.3328365Z found 0 vulnerabilities

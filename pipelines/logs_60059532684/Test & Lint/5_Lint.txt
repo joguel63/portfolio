@@ -1,0 +1,47 @@
+﻿2026-03-10T17:23:51.3619894Z ##[group]Run npm run lint
+2026-03-10T17:23:51.3620195Z [36;1mnpm run lint[0m
+2026-03-10T17:23:51.3671160Z shell: /usr/bin/bash -e {0}
+2026-03-10T17:23:51.3671431Z ##[endgroup]
+2026-03-10T17:23:51.4926551Z 
+2026-03-10T17:23:51.4927077Z > portfolio@0.0.0 lint
+2026-03-10T17:23:51.4927717Z > eslint .
+2026-03-10T17:23:51.4927912Z 
+2026-03-10T17:23:54.1629466Z 
+2026-03-10T17:23:54.1634661Z /home/runner/work/portfolio/portfolio/src/components/Contact/Contact.jsx
+2026-03-10T17:23:54.1688533Z ##[error]  254:45  error  'Icon' is defined but never used  no-unused-vars
+2026-03-10T17:23:54.1700176Z 
+2026-03-10T17:23:54.1700918Z /home/runner/work/portfolio/portfolio/src/components/Navbar/Navbar.jsx
+2026-03-10T17:23:54.1702218Z   54:31  error    Error: Cannot access variable before it is declared
+2026-03-10T17:23:54.1702706Z 
+2026-03-10T17:23:54.1703742Z `closeMenu` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+2026-03-10T17:23:54.1704628Z 
+2026-03-10T17:23:54.1704992Z   52 |     if (!menuOpen) return
+2026-03-10T17:23:54.1705500Z   53 |     const handleKeyDown = (e) => {
+2026-03-10T17:23:54.1726539Z > 54 |       if (e.key === 'Escape') closeMenu()
+2026-03-10T17:23:54.1727328Z      |                               ^^^^^^^^^ `closeMenu` accessed before it is declared
+2026-03-10T17:23:54.1727965Z   55 |     }
+2026-03-10T17:23:54.1728504Z   56 |     document.addEventListener('keydown', handleKeyDown)
+2026-03-10T17:23:54.1729399Z   57 |     return () => document.removeEventListener('keydown', handleKeyDown)
+2026-03-10T17:23:54.1729932Z 
+2026-03-10T17:23:54.1730114Z   83 |   }, [menuOpen])
+2026-03-10T17:23:54.1730481Z   84 |
+2026-03-10T17:23:54.1731394Z > 85 |   const closeMenu = useCallback(() => {
+2026-03-10T17:23:54.1731969Z      |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-10T17:23:54.1732482Z > 86 |     setMenuOpen(false)
+2026-03-10T17:23:54.1732903Z      | ^^^^^^^^^^^^^^^^^^^^^^
+2026-03-10T17:23:54.1733486Z > 87 |     hamburgerRef.current?.focus()
+2026-03-10T17:23:54.1734027Z      | ^^^^^^^^^^^^^^^^^^^^^^
+2026-03-10T17:23:54.1734545Z > 88 |   }, [])
+2026-03-10T17:23:54.1734982Z      | ^^^^^^^^^ `closeMenu` is declared here
+2026-03-10T17:23:54.1735447Z   89 |
+2026-03-10T17:23:54.1736108Z   90 |   const handleNavClick = useCallback((e, href) => {
+2026-03-10T17:23:54.1736752Z   91 |     e.preventDefault()  react-hooks/immutability
+2026-03-10T17:23:54.1745478Z ##[warning]  58:6   warning  React Hook useEffect has a missing dependency: 'closeMenu'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             react-hooks/exhaustive-deps
+2026-03-10T17:23:54.1770717Z 
+2026-03-10T17:23:54.1771267Z /home/runner/work/portfolio/portfolio/src/test-setup.js
+2026-03-10T17:23:54.1772631Z ##[error]   4:1  error  'global' is not defined  no-undef
+2026-03-10T17:23:54.1774622Z ##[error]  11:1  error  'global' is not defined  no-undef
+2026-03-10T17:23:54.1776096Z 
+2026-03-10T17:23:54.1776669Z ✖ 5 problems (4 errors, 1 warning)
+2026-03-10T17:23:54.1776967Z 
+2026-03-10T17:23:54.2027959Z ##[error]Process completed with exit code 1.
