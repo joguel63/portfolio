@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { profile } from '../../data/index.js'
@@ -32,6 +32,38 @@ const SOCIAL_LINKS = [
 
 export default function Contact() {
   const sectionRef = useRef(null)
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [submitted, setSubmitted] = useState(false)
+  const [focusedField, setFocusedField] = useState(null)
+
+  function handleChange(e) {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    const subject = encodeURIComponent(`Contacto desde portfolio: ${formData.name}`)
+    const body = encodeURIComponent(`Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`)
+    window.open(`mailto:${profile.email}?subject=${subject}&body=${body}`)
+    setSubmitted(true)
+    setTimeout(() => {
+      setSubmitted(false)
+      setFormData({ name: '', email: '', message: '' })
+    }, 3000)
+  }
+
+  const inputStyle = (field) => ({
+    width: '100%',
+    backgroundColor: 'rgba(0,245,255,0.03)',
+    border: `1px solid ${focusedField === field ? 'var(--color-accent-cyan)' : 'rgba(0,245,255,0.2)'}`,
+    borderRadius: '0.5rem',
+    padding: '0.75rem 1rem',
+    color: 'var(--color-text-primary)',
+    outline: 'none',
+    fontFamily: 'inherit',
+    fontSize: '0.875rem',
+  })
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -106,6 +138,103 @@ export default function Contact() {
           Estoy disponible para proyectos freelance, colaboraciones y nuevas oportunidades.
           No dudes en contactarme.
         </p>
+
+        <form
+          aria-label="Formulario de contacto"
+          onSubmit={handleSubmit}
+          className="w-full mb-12 contact-animate"
+          style={{ textAlign: 'left' }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label htmlFor="contact-name" className="font-mono text-xs mb-2 block" style={{ color: 'var(--color-text-muted)' }}>
+                Nombre
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                placeholder="Tu nombre"
+                value={formData.name}
+                onChange={handleChange}
+                onFocus={() => setFocusedField('name')}
+                onBlur={() => setFocusedField(null)}
+                style={inputStyle('name')}
+                className="font-mono text-sm"
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-email" className="font-mono text-xs mb-2 block" style={{ color: 'var(--color-text-muted)' }}>
+                Email
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                placeholder="tu@email.com"
+                value={formData.email}
+                onChange={handleChange}
+                onFocus={() => setFocusedField('email')}
+                onBlur={() => setFocusedField(null)}
+                style={inputStyle('email')}
+                className="font-mono text-sm"
+              />
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="contact-message" className="font-mono text-xs mb-2 block" style={{ color: 'var(--color-text-muted)' }}>
+              Mensaje
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              required
+              rows={5}
+              placeholder="Cuéntame sobre tu proyecto..."
+              value={formData.message}
+              onChange={handleChange}
+              onFocus={() => setFocusedField('message')}
+              onBlur={() => setFocusedField(null)}
+              style={{ ...inputStyle('message'), resize: 'vertical' }}
+              className="font-mono text-sm"
+            />
+          </div>
+
+          {submitted ? (
+            <p role="status" className="font-mono text-sm" style={{ color: 'var(--color-accent-cyan)' }}>
+              ¡Mensaje preparado! Se abrirá tu cliente de correo.
+            </p>
+          ) : (
+            <button
+              type="submit"
+              aria-label="Enviar mensaje por correo"
+              className="px-8 py-4 rounded-lg border font-mono text-sm font-medium transition-all duration-300"
+              style={{
+                borderColor: 'rgba(0,245,255,0.2)',
+                color: 'var(--color-text-primary)',
+                backgroundColor: 'rgba(0,245,255,0.03)',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--color-accent-cyan)'
+                e.currentTarget.style.color = 'var(--color-accent-cyan)'
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(0,245,255,0.2)'
+                e.currentTarget.style.backgroundColor = 'rgba(0,245,255,0.08)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(0,245,255,0.2)'
+                e.currentTarget.style.color = 'var(--color-text-primary)'
+                e.currentTarget.style.boxShadow = 'none'
+                e.currentTarget.style.backgroundColor = 'rgba(0,245,255,0.03)'
+              }}
+            >
+              Enviar mensaje
+            </button>
+          )}
+        </form>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap contact-animate">
           {SOCIAL_LINKS.map(({ label, href, Icon }) => (
