@@ -93,6 +93,13 @@ describe('hero intro animation contract', () => {
     expect(heroSource).not.toContain('?url');
     expect(heroSource).not.toContain('import(initHeroIntroModuleUrl)');
     expect(heroCssSource).toContain('data-hero-intro-state');
+    expect(heroCssSource).toContain('scrollbar-gutter: stable');
+    expect(heroCssSource).not.toContain('::-webkit-scrollbar');
+    expect(heroCssSource).toContain('@keyframes hero-scroll-line-pulse');
+    expect(heroCssSource).toContain('body[data-hero-intro-state="released"] [data-hero-scroll] .hero__scroll-line');
+    expect(heroOrbCssSource).toContain('body[data-hero-intro-state="active"] .hero__orb-orbit::before');
     expect(headerCssSource).toContain('data-hero-intro-state="active"');
+    expect(headerCssSource).toContain('transform');
+    expect(headerCssSource).toContain('opacity 260ms ease-out');
   });
 });
