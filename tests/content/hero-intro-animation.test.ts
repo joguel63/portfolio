@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import heroOrbSource from '../../src/components/atoms/HeroOrb.astro?raw';
 import homeTemplateSource from '../../src/components/templates/HomeTemplate.astro?raw';
 import configSource from '../../src/lib/animations/hero/hero-motion-config.ts?raw';
 import initSource from '../../src/lib/animations/hero/init-hero-intro.ts?raw';
@@ -26,5 +27,16 @@ describe('hero intro animation contract', () => {
     expect(stateSource).toContain('data-hero-intro-state');
     expect(configSource).toContain('48rem');
     expect(configSource).toContain('prefers-reduced-motion');
+  });
+
+  it('keeps explicit orb animation layers stable for selector-based motion hooks', () => {
+    expect(heroOrbSource).toContain('hero__orb-rings');
+    expect(heroOrbSource).toContain('hero__orb-ring hero__orb-ring--inner');
+    expect(heroOrbSource).toContain('hero__orb-ring hero__orb-ring--middle');
+    expect(heroOrbSource).toContain('hero__orb-ring hero__orb-ring--outer');
+    expect(heroOrbSource).toContain('hero__orb-orbit hero__orb-orbit--alpha');
+    expect(heroOrbSource).toContain('hero__orb-orbit hero__orb-orbit--beta');
+    expect(heroOrbSource).toContain('hero__orb-orbit hero__orb-orbit--gamma');
+    expect(heroOrbSource).toContain('hero__orb-satellite');
   });
 });
