@@ -1,0 +1,91 @@
+---
+import { LOCALE_COOKIE_KEY, LOCALE_COOKIE_MAX_AGE, type AppLocale } from '../../lib/i18n/locale';
+import type { NavigationContent } from '../../lib/content/types/content';
+import { getHomePath, getSectionPath } from '../../lib/i18n/navigation';
+
+import ButtonLink from '../atoms/ButtonLink.astro';
+
+interface Props {
+  locale: AppLocale;
+  navigation: NavigationContent;
+  siteName: string;
+  resumeHref?: string;
+}
+
+const { locale, navigation, siteName, resumeHref } = Astro.props as Props;
+const resumeLabel = locale === 'es' ? 'Resume' : 'Resume';
+const resumeTarget = resumeHref ?? '#';
+---
+
+<header class="site-header">
+  <nav class="site-header__bar" aria-label={siteName}>
+    <div class="site-header__inner">
+      <a href={getHomePath(locale)} class="site-brand">
+        <span class="site-brand__name">{siteName}</span>
+      </a>
+
+      <div class="site-header__nav" aria-label={siteName}>
+        {navigation.sections.map((section) => (
+          <a href={getSectionPath(locale, section.id)} class="nav-link">{section.label}</a>
+        ))}
+      </div>
+
+      <div class="site-header__actions">
+        <div
+          class="language-switcher"
+          aria-label="Language switcher"
+          data-language-switcher
+          data-cookie-key={LOCALE_COOKIE_KEY}
+          data-cookie-max-age={String(LOCALE_COOKIE_MAX_AGE)}
+        >
+          <a
+            href={getHomePath('es')}
+            class="language-switcher__link"
+            data-locale="es"
+            aria-current={locale === 'es' ? 'true' : 'false'}
+          >
+            {navigation.localeLabels.es}
+          </a>
+          <span class="language-switcher__divider" aria-hidden="true">/</span>
+          <a
+            href={getHomePath('en')}
+            class="language-switcher__link"
+            data-locale="en"
+            aria-current={locale === 'en' ? 'true' : 'false'}
+          >
+            {navigation.localeLabels.en}
+          </a>
+        </div>
+        <ButtonLink href={resumeTarget} variant="ghost" className="header-resume">
+          {resumeLabel}
+        </ButtonLink>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  const switcher = document.currentScript?.previousElementSibling?.querySelector('[data-language-switcher]');
+
+  if (switcher instanceof HTMLElement) {
+    switcher.addEventListener('click', (event) => {
+      const link = event.target instanceof Element
+        ? event.target.closest('a[data-locale]')
+        : null;
+
+      if (!(link instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      const locale = link.dataset.locale;
+      const cookieKey = switcher.dataset.cookieKey;
+      const maxAge = switcher.dataset.cookieMaxAge;
+
+      if (!locale || !cookieKey || !maxAge) {
+        return;
+      }
+
+      document.cookie = `${cookieKey}=${encodeURIComponent(locale)}; path=/; max-age=${maxAge}`;
+    });
+  }
+</script>

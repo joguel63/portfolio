@@ -1,0 +1,2 @@
+@custom-media --screen-tablet (max-width: 64rem);
+@custom-media --screen-mobile (max-width: 48rem);

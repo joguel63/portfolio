@@ -1,0 +1,37 @@
+---
+import Heading from '../atoms/Heading.astro';
+import Text from '../atoms/Text.astro';
+import Badge from '../atoms/Badge.astro';
+import StitchIcon from '../atoms/StitchIcon.astro';
+
+interface Props {
+  label: string;
+  category: string;
+  description?: string;
+  skills: string[];
+}
+
+const { label, category, description, skills } = Astro.props as Props;
+
+const iconMap: Record<string, string> = {
+  Autonomy: 'neurology',
+  Product: 'layers',
+  Systems: 'database',
+};
+
+const iconLabel = iconMap[category] ?? 'terminal';
+---
+
+<article class="panel skill-card stack-card">
+  <div class="stack-card__icon" aria-hidden="true">
+    <StitchIcon name={iconLabel} />
+  </div>
+  <span class="skill-card__category stack-card__category visually-hidden">{category}</span>
+  <Heading as="h3" size="md" className="stack-card__title">{label}</Heading>
+  {description && <Text size="small" className="stack-card__description">{description}</Text>}
+  <div class="cluster stack-card__tags">
+    {skills.map((skill) => (
+      <Badge className="stack-card__tag">{skill}</Badge>
+    ))}
+  </div>
+</article>

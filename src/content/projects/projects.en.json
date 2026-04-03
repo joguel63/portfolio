@@ -1,0 +1,57 @@
+[
+  {
+    "id": "cognitive-engine-v2",
+    "title": "Cognitive Engine v2.0",
+    "summary": "Autonomous agent architecture for optimizing critical infrastructure in real time.",
+    "year": "2026",
+    "role": "Featured — Agentic",
+    "stack": ["Agents", "Realtime", "Infrastructure"],
+    "featured": true,
+    "image": "/images/projects/cognitive-engine-v2.jpg",
+    "imageAlt": "Abstract technological landscape with connected data nodes and neon cyan highlights",
+    "links": {
+      "repo": {
+        "label": "Code",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      },
+      "caseStudy": {
+        "label": "Case study",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      }
+    }
+  },
+  {
+    "id": "nexus-dash",
+    "title": "Nexus Dash",
+    "summary": "Distributed systems control panel with a focus on advanced observability.",
+    "year": "2026",
+    "role": "Observability",
+    "stack": ["Dashboards", "Metrics", "Distributed Systems"],
+    "featured": false,
+    "image": "/images/projects/nexus-dash.jpg",
+    "imageAlt": "Minimal architectural rendering of a modern server rack glowing with soft blue light in a dark void",
+    "links": {
+      "demo": {
+        "label": "Demo",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      }
+    }
+  },
+  {
+    "id": "hyperscale-core",
+    "title": "HyperScale Core",
+    "summary": "Asynchronous processing engine designed for high availability and low latency.",
+    "year": "2026",
+    "role": "Compute Layer",
+    "stack": ["Async", "Resilience", "Low Latency"],
+    "featured": false,
+    "image": "/images/projects/hyperscale-core.jpg",
+    "imageAlt": "Generative geometric artwork built from light threads on a deep black background",
+    "links": {
+      "caseStudy": {
+        "label": "Case study",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      }
+    }
+  }
+]

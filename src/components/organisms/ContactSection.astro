@@ -1,0 +1,53 @@
+---
+import ButtonLink from '../atoms/ButtonLink.astro';
+import Heading from '../atoms/Heading.astro';
+import Text from '../atoms/Text.astro';
+
+interface Props {
+  title: string;
+  heading: string;
+  description: string;
+  primaryAction: {
+    label: string;
+    href: string;
+  };
+  secondaryAction?: {
+    label: string;
+    href: string;
+  };
+}
+
+const { title, heading, description, primaryAction, secondaryAction } = Astro.props as Props;
+---
+
+<section id="contacto" class="section section--contact">
+  <div class="contact contact--stitch">
+    <div class="contact-card contact-card--closing">
+      <div class="panel contact-card__surface">
+        <div class="contact-copy">
+          <div class="section-header section-header--compact contact-header">
+            <Heading as="h2" size="sm">{title}</Heading>
+            <Heading as="h3" size="xl" className="contact__heading">{heading}</Heading>
+          </div>
+
+          <Text size="lead" className="contact__description">{description}</Text>
+        </div>
+
+        <div class="contact-actions">
+          <ButtonLink href={primaryAction.href} className="contact-actions__primary">{primaryAction.label}</ButtonLink>
+          {secondaryAction && (
+            <ButtonLink
+              href={secondaryAction.href}
+              variant="secondary"
+              className="contact-actions__secondary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {secondaryAction.label}
+            </ButtonLink>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,200 @@
+.stack__cards {
+  display: grid;
+}
+
+.stack__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.95rem;
+}
+
+.section--stack {
+  background: rgba(9, 9, 11, 0.5);
+}
+
+.section-header--stack {
+  margin-bottom: clamp(1.2rem, 2.5vw, 1.9rem);
+  max-width: none;
+  gap: 0.42rem;
+}
+
+.section-header--stack h2 {
+  font-size: 30px;
+}
+
+.stack__eyebrow {
+  color: var(--color-accent-primary);
+}
+
+.stack__item {
+  min-width: 0;
+}
+
+.skill-card {
+  display: grid;
+  gap: 0.7rem;
+  min-height: 100%;
+  padding: 1rem;
+}
+
+.stack-card {
+  gap: 0;
+  align-content: start;
+  min-height: 100%;
+  padding: 2rem;
+  border-color: rgba(82, 82, 91, 0.22);
+  border-left-width: 2px;
+  border-left-color: rgba(82, 82, 91, 0.36);
+  border-radius: 1rem;
+  background: rgba(24, 24, 27, 0.4);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0.75rem 1.5rem rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  transition:
+    border-left-color var(--motion-duration-fast) var(--motion-easing-standard),
+    transform var(--motion-duration-fast) var(--motion-easing-standard),
+    background-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+.stack-card:hover {
+  border-left-color: rgba(34, 211, 238, 0.36);
+}
+
+.stack-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(82, 82, 91, 0.28);
+  border-radius: 0.75rem;
+  background: rgba(24, 24, 27, 0.42);
+  color: var(--color-accent-primary);
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-easing-standard),
+    background-color var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+.stack-card:hover .stack-card__icon {
+  border-color: rgba(34, 211, 238, 0.32);
+  background: rgba(34, 211, 238, 0.08);
+}
+
+.stack-card__icon .material-symbols-outlined {
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: var(--font-weight-medium);
+}
+
+.stack-card__category {
+  margin-bottom: 0.28rem;
+  color: var(--color-text-muted-soft);
+}
+
+.stack-card__title {
+  margin-bottom: 0.5rem;
+}
+
+.stack-card__description {
+  margin-bottom: 1.5rem;
+  color: var(--color-text-muted);
+  line-height: 1.36;
+}
+
+.stack-card__tags {
+  gap: 0.28rem;
+}
+
+.stack-card__tag {
+  min-height: auto;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  border-color: rgba(82, 82, 91, 0.28);
+  background: rgba(24, 24, 27, 0.34);
+  font-size: 0.625rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted-soft);
+}
+
+.skill-card__marker {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0.9rem;
+  background:
+    radial-gradient(circle at center, rgba(34, 211, 238, 0.22), transparent 60%),
+    rgba(255, 255, 255, 0.02);
+}
+
+.skill-card__category {
+  color: var(--color-accent-primary);
+}
+
+@media (max-width: 64rem) {
+  .stack__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .skill-card {
+    padding: 0.88rem;
+  }
+
+  .stack__grid {
+    grid-template-columns: 1fr;
+    gap: 0.48rem;
+  }
+
+  .section--stack {
+    padding-block: clamp(1.95rem, 6.9vw, 2.55rem);
+  }
+
+  .section-header--stack {
+    margin-bottom: 0.72rem;
+  }
+
+  .stack-card {
+    padding: 1.5rem;
+  }
+
+  .stack-card__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .stack-card__icon .material-symbols-outlined {
+    font-size: 1.25rem;
+  }
+
+  .stack-card__category {
+    margin-bottom: 0.16rem;
+  }
+
+  .stack-card__title {
+    margin-bottom: 0.25rem;
+    font-size: 1.125rem;
+    line-height: 1.04;
+  }
+
+  .stack-card__description {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.28;
+  }
+
+  .stack-card__tags {
+    gap: 0.22rem;
+  }
+
+  .stack-card__tag {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.5625rem;
+  }
+}

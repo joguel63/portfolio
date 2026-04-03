@@ -1,0 +1,36 @@
+{
+  "sections": [
+    {
+      "id": "sobre-mi",
+      "labels": {
+        "es": "Sobre mí",
+        "en": "About"
+      }
+    },
+    {
+      "id": "stack",
+      "labels": {
+        "es": "Stack",
+        "en": "Stack"
+      }
+    },
+    {
+      "id": "proyectos",
+      "labels": {
+        "es": "Proyectos",
+        "en": "Projects"
+      }
+    },
+    {
+      "id": "contacto",
+      "labels": {
+        "es": "Contacto",
+        "en": "Contact"
+      }
+    }
+  ],
+  "localeLabels": {
+    "es": "ES",
+    "en": "EN"
+  }
+}

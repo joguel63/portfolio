@@ -1,0 +1,82 @@
+---
+import { getHomePath } from '../lib/i18n/navigation';
+import type { AppLocale } from '../lib/i18n/locale';
+import { createRootLocaleRedirectScript } from '../lib/i18n/root-locale-redirect';
+
+import '../styles/tokens/index.css';
+import '../styles/globals/reset.css';
+import '../styles/globals/fonts.css';
+import '../styles/globals/base.css';
+import '../styles/components/button.css';
+import '../styles/components/header.css';
+import '../styles/components/sections.css';
+import '../styles/components/hero.css';
+import '../styles/components/hero-orb.css';
+import '../styles/components/about.css';
+import '../styles/components/stack.css';
+import '../styles/components/projects.css';
+import '../styles/components/contact.css';
+
+interface Props {
+  locale: AppLocale;
+  title: string;
+  description: string;
+  siteUrl: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  defaultOgImage?: string;
+  enableRootLocaleRedirect?: boolean;
+}
+
+const {
+  locale,
+  title,
+  description,
+  siteUrl,
+  canonicalPath = Astro.url.pathname,
+  ogImage,
+  defaultOgImage,
+  enableRootLocaleRedirect = false,
+} = Astro.props as Props;
+
+function getAbsoluteUrl(path: string) {
+  return new URL(path, siteUrl).toString();
+}
+
+const canonicalUrl = getAbsoluteUrl(canonicalPath);
+const socialImage = ogImage ?? defaultOgImage;
+const ogImageUrl = socialImage ? getAbsoluteUrl(socialImage) : undefined;
+const rootLocaleRedirectScript = enableRootLocaleRedirect ? createRootLocaleRedirectScript() : undefined;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="es" href={getAbsoluteUrl(getHomePath('es'))} />
+    <link rel="alternate" hreflang="en" href={getAbsoluteUrl(getHomePath('en'))} />
+    <link rel="alternate" hreflang="x-default" href={getAbsoluteUrl(getHomePath('es'))} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'es_ES'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+  </head>
+  <body class="site-shell">
+    <slot />
+    {rootLocaleRedirectScript && <script is:inline set:html={rootLocaleRedirectScript}></script>}
+  </body>
+</html>

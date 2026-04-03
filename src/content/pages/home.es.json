@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "eyebrow": "Full Stack & Systems Architect",
+    "title": "Miguel Muñoz",
+    "description": "Software Engineer",
+    "chips": [
+      "Programación Agéntica con IA",
+      "High-Performance Systems"
+    ],
+    "primaryCta": {
+      "label": "Ver proyectos",
+      "href": "#proyectos"
+    },
+    "secondaryCta": {
+      "label": "Contactar",
+        "href": "#contacto"
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "heading": "Diseñando el futuro de la ingeniería autónoma.",
+    "body": [
+      "Con un enfoque centrado en la programación agéntica, desarrollo sistemas que no solo responden a inputs, sino que razonan y operan de forma autónoma para resolver problemas complejos de ingeniería.",
+      "Mi trayectoria combina la robustez de la arquitectura de sistemas con la agilidad de las interfaces modernas. Creo firmemente que el software premium nace de la intersección entre el rendimiento técnico y una estética editorial impecable."
+    ],
+    "stats": [
+      {
+        "value": "8+",
+        "label": "Años de Exp."
+      },
+      {
+        "value": "40+",
+        "label": "Sistemas IA"
+      }
+    ],
+    "image": "/images/about/profilepicture.png",
+    "imageAlt": "Retrato de Miguel Munoz"
+  },
+  "stack": {
+    "title": "Tech Stack",
+    "intro": "Herramientas de Alta Precisión"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "intro": "Trabajo Seleccionado",
+    "sublabel": "Curaduría 2026"
+  },
+  "contact": {
+    "title": "Colaboración",
+    "heading": "¿Listo para escalar su infraestructura?",
+    "description": "Actualmente disponible para proyectos de consultoría técnica y desarrollo de sistemas basados en IA agéntica.",
+    "primaryAction": {
+      "label": "Empezar un proyecto",
+      "href": "mailto:hello@miguelmunoz.dev"
+    },
+    "secondaryAction": {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/miguelmunoz"
+    }
+  }
+}

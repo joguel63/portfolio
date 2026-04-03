@@ -1,0 +1,235 @@
+.about {
+  display: grid;
+  grid-template-columns: minmax(24rem, 1fr) minmax(0, 1fr);
+  gap: clamp(3rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.about--stitch {
+  align-items: center;
+}
+
+.about__media-column,
+.about__content-column {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.about__content-column {
+  align-content: start;
+  gap: clamp(1rem, 1.8vw, 2rem);
+}
+
+.about__eyebrow {
+  color: rgba(113, 113, 122, 1);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about__media-column {
+  position: relative;
+  justify-items: center;
+}
+
+.about__portrait-shell {
+  position: relative;
+  width: min(100%, 29rem);
+}
+
+.about__portrait-halo {
+  position: absolute;
+  inset: -0.3rem;
+  border-radius: calc(var(--radius-surface) + 0.3rem);
+  background:
+    radial-gradient(circle at 24% 20%, rgba(34, 211, 238, 0.06), transparent 28%),
+    linear-gradient(135deg, rgba(34, 211, 238, 0.03), transparent 52%);
+  filter: blur(18px);
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.about__portrait {
+  aspect-ratio: 1;
+  min-height: clamp(22rem, 34vw, 28rem);
+  border-color: rgba(39, 39, 42, 1);
+  background: rgba(24, 24, 27, 1);
+  box-shadow: 0 1.6rem 3.25rem rgba(0, 0, 0, 0.34);
+}
+
+.about__portrait::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(9, 9, 11, 0), rgba(9, 9, 11, 0.05) 46%, rgba(9, 9, 11, 0.72));
+  pointer-events: none;
+}
+
+.about__portrait > img {
+  filter: grayscale(1);
+  transition:
+    transform var(--motion-duration-slow) var(--motion-easing-standard),
+    filter var(--motion-duration-slow) var(--motion-easing-standard);
+  object-position: center 18%;
+}
+
+.about__portrait-shell:hover .about__portrait > img {
+  transform: none;
+  filter: grayscale(0);
+}
+
+.about__heading-block {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.about__body {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 35rem;
+}
+
+.about__heading {
+  max-width: none;
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 1.08;
+}
+
+.about__body .text--lead {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  font-weight: 300;
+  color: #a1a1aa;
+}
+
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.about__stats--stitch {
+  max-width: 27rem;
+  padding-top: 0.25rem;
+}
+
+.about__stat-card {
+  padding: 1.25rem 1.4rem;
+}
+
+.about__stat-inline {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.about__stat-card strong,
+.about__stat-inline strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.about__stat-card span,
+.about__stat-inline span {
+  display: block;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 64rem) {
+  .about {
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 4vw, 2rem);
+  }
+}
+
+@media (max-width: 48rem) {
+  .section--about {
+    padding-block: clamp(1.6rem, 6vw, 2.1rem);
+  }
+
+  .about {
+    gap: 1rem;
+  }
+
+  .about__portrait-shell {
+    width: min(100%, 15rem);
+  }
+
+  .about__portrait-halo {
+    inset: -0.22rem;
+    filter: blur(10px);
+    opacity: 0.32;
+  }
+
+  .about__portrait {
+    min-height: clamp(13.5rem, 58vw, 16rem);
+  }
+
+  .about__content-column {
+    gap: 0.75rem;
+  }
+
+  .about__heading-block {
+    gap: 0.35rem;
+  }
+
+  .about__body {
+    gap: 1rem;
+  }
+
+  .about__heading {
+    max-width: none;
+    font-size: clamp(1.875rem, 8vw, 2.25rem);
+    line-height: 1.05;
+  }
+
+  .about__body .text--lead {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .about__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.42rem;
+  }
+
+  .about__stats--stitch {
+    padding-top: 0.25rem;
+  }
+
+  .about__stat-inline {
+    gap: 0.08rem;
+  }
+
+  .about__stat-inline strong {
+    font-size: 1.2rem;
+  }
+
+  .about__stat-inline span {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .about__portrait-shell {
+    width: min(100%, 14.5rem);
+  }
+
+  .about__portrait-halo {
+    inset: -0.14rem;
+  }
+
+  .about__stats {
+    gap: 0.35rem;
+  }
+
+  .about__stat-inline strong {
+    font-size: 1.08rem;
+  }
+}

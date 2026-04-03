@@ -1,0 +1,21 @@
+---
+import HomeTemplate from '../../components/templates/HomeTemplate.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadSiteContent } from '../../lib/content/loaders/load-site-content';
+import { mapHomePage } from '../../lib/content/mappers/map-home-page';
+
+const content = await loadSiteContent('en');
+const page = mapHomePage('en', content);
+---
+
+<BaseLayout
+  locale="en"
+  title={page.seo.title}
+  description={page.seo.description}
+  siteUrl={content.site.siteUrl}
+  canonicalPath="/en/"
+  ogImage={page.seo.ogImage}
+  defaultOgImage={content.site.assets.defaultOgImage}
+>
+  <HomeTemplate page={page} site={content.site} />
+</BaseLayout>

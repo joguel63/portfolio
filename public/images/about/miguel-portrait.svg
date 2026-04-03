@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait of Miguel Munoz</title>
+  <desc id="desc">Stylized portrait illustration for the about section.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111725" />
+      <stop offset="100%" stop-color="#0a0d14" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7ee6ff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#8b7cff" stop-opacity="0.7" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="1200" fill="url(#bg)" rx="48" />
+  <circle cx="720" cy="180" r="150" fill="url(#accent)" opacity="0.35" />
+  <circle cx="180" cy="980" r="180" fill="#4fe0b5" opacity="0.18" />
+  <rect x="180" y="210" width="600" height="760" rx="280" fill="#182133" />
+  <ellipse cx="480" cy="420" rx="160" ry="180" fill="#f1c7a8" />
+  <path d="M322 402c22-118 124-208 247-208 108 0 201 68 244 171-38-14-86-21-147-21-149 0-266 44-344 58Z" fill="#09101a" />
+  <path d="M340 712c43 108 138 176 250 176s208-68 250-176c-67-53-145-82-250-82s-183 29-250 82Z" fill="#24304a" />
+  <rect x="264" y="918" width="432" height="128" rx="64" fill="#111725" stroke="#7ee6ff" stroke-opacity="0.25" />
+  <text x="480" y="994" fill="#f4f7fb" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="44" text-anchor="middle">Software Engineer</text>
+</svg>

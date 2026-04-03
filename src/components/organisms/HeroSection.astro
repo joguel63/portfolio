@@ -1,0 +1,51 @@
+---
+import type { AppLocale } from '../../lib/i18n/locale';
+import type { HomeHeroContent } from '../../lib/content/types/content';
+
+import HeroOrb from '../atoms/HeroOrb.astro';
+import StitchIcon from '../atoms/StitchIcon.astro';
+
+interface Props {
+  locale: AppLocale;
+  hero: HomeHeroContent;
+}
+
+const { locale, hero } = Astro.props as Props;
+const scrollLabel = locale === 'es' ? 'Scroll' : 'Scroll';
+const scrollAriaLabel = locale === 'es' ? 'Ir a la sección sobre mí' : 'Scroll to about section';
+---
+
+<section id="hero" class="section">
+  <div class="hero hero--faithful">
+    <HeroOrb />
+
+    <div class="hero__content">
+      <span class="eyebrow">{hero.eyebrow}</span>
+      <h1 class="heading heading--display hero__title">
+        <span class="hero__title-name">{hero.title}</span>
+        <span class="hero__title-support">{hero.description}</span>
+      </h1>
+
+      <div class="hero__descriptor-list" aria-label={locale === 'es' ? 'Especialidades' : 'Specialties'}>
+        {hero.chips.map((chip, index) => (
+          <>
+            {index > 0 && <span class="hero__descriptor-divider" aria-hidden="true"></span>}
+            <span class="hero__descriptor-item">
+              <StitchIcon
+                name={index === 0 ? 'terminal' : 'settings_input_component'}
+                className="hero__descriptor-icon"
+                ariaHidden={true}
+              />
+              <span>{chip}</span>
+            </span>
+          </>
+        ))}
+      </div>
+    </div>
+
+    <a href="#sobre-mi" class="hero__scroll" aria-label={scrollAriaLabel}>
+      <span class="hero__scroll-label">{scrollLabel}</span>
+      <span class="hero__scroll-line"></span>
+    </a>
+  </div>
+</section>

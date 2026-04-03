@@ -1,0 +1,15 @@
+{
+  "siteUrl": "https://miguelmunoz.dev",
+  "author": {
+    "name": "Miguel Muñoz",
+    "role": "Software Engineer",
+    "email": "hello@miguelmunoz.dev"
+  },
+  "social": {
+    "github": "https://github.com/miguelmunoz",
+    "linkedin": "https://www.linkedin.com/in/miguelmunoz"
+  },
+  "assets": {
+    "defaultOgImage": "/images/og/home.svg"
+  }
+}

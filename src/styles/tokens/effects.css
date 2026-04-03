@@ -1,0 +1,8 @@
+:root {
+  --blur-panel: 12px;
+  --opacity-grid-overlay: 0.05;
+  --motion-duration-fast: 160ms;
+  --motion-duration-slow: 420ms;
+  --motion-easing-standard: ease;
+  --motion-translate-lift-y: -1px;
+}

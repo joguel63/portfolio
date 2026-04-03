@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Miguel Munoz portfolio open graph image</title>
+  <desc id="desc">Open graph card for Miguel Munoz portfolio.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0d14" />
+      <stop offset="100%" stop-color="#111725" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="168" cy="128" r="120" fill="#7ee6ff" opacity="0.2" />
+  <circle cx="1040" cy="520" r="160" fill="#8b7cff" opacity="0.18" />
+  <rect x="72" y="72" width="1056" height="486" rx="40" fill="#0f1522" stroke="#7ee6ff" stroke-opacity="0.18" />
+  <text x="120" y="210" fill="#7ee6ff" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="28">Software Engineer</text>
+  <text x="120" y="320" fill="#f4f7fb" font-family="'Space Grotesk', Arial, sans-serif" font-size="92">Miguel Munoz</text>
+  <text x="120" y="392" fill="#c8d0df" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="32">Full stack, systems, and AI agent programming for clear, maintainable web products.</text>
+</svg>

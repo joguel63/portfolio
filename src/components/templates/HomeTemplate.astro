@@ -1,0 +1,53 @@
+---
+import type { HomePageModel, SiteContent } from '../../lib/content/types/content';
+
+import AboutSection from '../organisms/AboutSection.astro';
+import ContactSection from '../organisms/ContactSection.astro';
+import Footer from '../organisms/Footer.astro';
+import Header from '../organisms/Header.astro';
+import HeroSection from '../organisms/HeroSection.astro';
+import ProjectsSection from '../organisms/ProjectsSection.astro';
+import StackSection from '../organisms/StackSection.astro';
+
+interface Props {
+  page: HomePageModel;
+  site: SiteContent;
+}
+
+const { page, site } = Astro.props as Props;
+---
+
+<Header
+  locale={page.locale}
+  navigation={page.navigation}
+  siteName={site.author.name}
+  resumeHref={site.assets.resume}
+/>
+
+<main class="site-main">
+  <HeroSection locale={page.locale} hero={page.hero} />
+  <AboutSection about={page.about} />
+  <StackSection title={page.stack.title} intro={page.stack.intro} items={page.stack.items} />
+  <ProjectsSection
+    title={page.projects.title}
+    intro={page.projects.intro}
+    sublabel={page.projects.sublabel}
+    items={page.projects.items}
+  />
+  <ContactSection
+    title={page.contact.title}
+    heading={page.contact.heading}
+    description={page.contact.description}
+    primaryAction={page.contact.primaryAction}
+    secondaryAction={page.contact.secondaryAction}
+  />
+</main>
+
+<Footer
+  locale={page.locale}
+  siteName={site.author.name}
+  siteRole={site.author.role}
+  email={site.author.email}
+  github={site.social.github}
+  linkedin={site.social.linkedin}
+/>

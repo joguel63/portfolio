@@ -1,0 +1,26 @@
+---
+interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
+  size?: 'display' | 'xl' | 'lg' | 'md' | 'sm';
+  tone?: 'default' | 'muted';
+  className?: string;
+  id?: string;
+}
+
+const {
+  as = 'h2',
+  size = 'lg',
+  tone = 'default',
+  className,
+  id,
+} = Astro.props as Props;
+
+const Tag = as;
+---
+
+<Tag
+  id={id}
+  class:list={['heading', `heading--${size}`, tone !== 'default' && `heading--${tone}`, className]}
+>
+  <slot />
+</Tag>

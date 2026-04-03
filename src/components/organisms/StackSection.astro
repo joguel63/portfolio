@@ -1,0 +1,38 @@
+---
+import type { StackItemContent } from '../../lib/content/types/content';
+
+import Heading from '../atoms/Heading.astro';
+import SkillChip from '../molecules/SkillChip.astro';
+
+interface Props {
+  title: string;
+  intro: string;
+  items: StackItemContent[];
+}
+
+const { title, intro, items } = Astro.props as Props;
+---
+
+<section id="stack" class="section section--stack">
+  <div class="container">
+    <div class="section-header section-header--stack">
+      <span class="eyebrow stack__eyebrow">{title}</span>
+      <Heading as="h2" size="xl">{intro}</Heading>
+    </div>
+
+    <div class="stack__cards">
+      <div class="stack__grid">
+        {items.map((item) => (
+          <div class="stack__item">
+            <SkillChip
+              label={item.label}
+              category={item.category}
+              description={item.description}
+              skills={item.skills}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

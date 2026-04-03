@@ -1,0 +1,63 @@
+---
+import { LOCALE_COOKIE_KEY, LOCALE_COOKIE_MAX_AGE, type AppLocale } from '../../lib/i18n/locale';
+import { getHomePath } from '../../lib/i18n/navigation';
+
+interface Props {
+  locale: AppLocale;
+  localeLabels: Record<AppLocale, string>;
+}
+
+const { locale, localeLabels } = Astro.props as Props;
+---
+
+<nav
+  class="language-switcher"
+  aria-label="Language switcher"
+  data-language-switcher
+  data-cookie-key={LOCALE_COOKIE_KEY}
+  data-cookie-max-age={String(LOCALE_COOKIE_MAX_AGE)}
+>
+  <a
+    href={getHomePath('es')}
+    class="language-switcher__link"
+    data-locale="es"
+    aria-current={locale === 'es' ? 'true' : 'false'}
+  >
+    {localeLabels.es}
+  </a>
+  <span class="language-switcher__divider" aria-hidden="true">/</span>
+  <a
+    href={getHomePath('en')}
+    class="language-switcher__link"
+    data-locale="en"
+    aria-current={locale === 'en' ? 'true' : 'false'}
+  >
+    {localeLabels.en}
+  </a>
+</nav>
+
+<script is:inline>
+  const switcher = document.currentScript?.previousElementSibling;
+
+  if (switcher instanceof HTMLElement) {
+    switcher.addEventListener('click', (event) => {
+      const link = event.target instanceof Element
+        ? event.target.closest('a[data-locale]')
+        : null;
+
+      if (!(link instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      const locale = link.dataset.locale;
+      const cookieKey = switcher.dataset.cookieKey;
+      const maxAge = switcher.dataset.cookieMaxAge;
+
+      if (!locale || !cookieKey || !maxAge) {
+        return;
+      }
+
+      document.cookie = `${cookieKey}=${encodeURIComponent(locale)}; path=/; max-age=${maxAge}`;
+    });
+  }
+</script>

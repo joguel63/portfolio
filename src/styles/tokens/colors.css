@@ -1,0 +1,65 @@
+:root {
+  --color-accent-primary: #22d3ee;
+  --color-accent-primary-emphasis: #67e8f9;
+  --color-accent-secondary: #8b7cff;
+  --color-accent-tertiary: #4fe0b5;
+  --color-canvas-base: #09090b;
+  --color-canvas-elevated: #0f1014;
+  --color-canvas-panel: #18181b;
+  --color-canvas-muted: #202026;
+  --color-canvas-deep: #06070a;
+  --color-border-soft: rgba(161, 161, 170, 0.14);
+  --color-border-strong: rgba(34, 211, 238, 0.14);
+  --color-border-editorial: rgba(255, 255, 255, 0.06);
+  --color-grid-line: rgba(255, 255, 255, 0.012);
+  --color-surface-tint: rgba(255, 255, 255, 0.03);
+  --color-surface-tint-strong: rgba(255, 255, 255, 0.05);
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #d4d4d8;
+  --color-text-muted: #a1a1aa;
+  --color-text-secondary-soft: #c4c4cc;
+  --color-text-muted-soft: #71717a;
+  --color-text-inverse: #09101a;
+  --color-header-surface: rgba(9, 9, 11, 0.8);
+  --color-header-border: rgba(63, 63, 70, 0.3);
+  --color-header-divider: rgba(63, 63, 70, 0.3);
+  --color-header-divider-strong: rgba(82, 82, 91, 0.52);
+  --color-overlay-strong: rgba(9, 9, 11, 0.76);
+  --color-overlay-soft: rgba(9, 9, 11, 0.44);
+  --color-overlay-panel: rgba(9, 9, 11, 0.68);
+  --color-overlay-accent-soft: rgba(34, 211, 238, 0.03);
+  --color-overlay-accent-strong: rgba(34, 211, 238, 0.07);
+  --color-glow-primary: rgba(34, 211, 238, 0.05);
+  --color-glow-secondary: rgba(139, 124, 255, 0.025);
+  --color-glow-tertiary: rgba(34, 211, 238, 0.08);
+  --color-glow-quaternary: rgba(79, 224, 181, 0.035);
+  --color-panel-surface-top: rgba(24, 24, 27, 0.42);
+  --color-panel-surface-bottom: rgba(9, 9, 11, 0.74);
+  --color-media-surface-top: rgba(16, 17, 22, 0.9);
+  --color-media-surface-bottom: rgba(10, 13, 20, 1);
+  --color-media-overlay-start: rgba(9, 9, 11, 0.02);
+  --color-media-overlay-end: rgba(9, 9, 11, 0.18);
+  --color-fallback-mark: rgba(244, 244, 245, 0.35);
+  --color-orb-line: rgba(34, 211, 238, 0.1);
+  --color-orb-core: rgba(34, 211, 238, 1);
+  --gradient-accent: linear-gradient(135deg, rgba(34, 211, 238, 0.14), rgba(139, 124, 255, 0.04));
+  --gradient-panel: linear-gradient(180deg, rgba(255, 255, 255, 0.022), rgba(255, 255, 255, 0));
+  --gradient-body:
+    radial-gradient(circle at 16% -8%, var(--color-glow-primary), transparent 24%),
+    radial-gradient(circle at 88% 0%, var(--color-glow-secondary), transparent 18%),
+    linear-gradient(180deg, var(--color-canvas-base) 0%, var(--color-canvas-elevated) 42%, var(--color-canvas-base) 100%);
+  --gradient-grid:
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px);
+  --gradient-grid-fade: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 78%);
+  --gradient-panel-surface: linear-gradient(180deg, var(--color-panel-surface-top), var(--color-panel-surface-bottom));
+  --gradient-media-frame:
+    radial-gradient(circle at top left, var(--color-glow-tertiary), transparent 30%),
+    radial-gradient(circle at bottom right, var(--color-glow-quaternary), transparent 22%),
+    linear-gradient(160deg, var(--color-media-surface-top), var(--color-media-surface-bottom));
+  --gradient-media-overlay: linear-gradient(180deg, var(--color-media-overlay-start), var(--color-media-overlay-end));
+  --gradient-button-primary: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-primary-emphasis));
+  --gradient-orb-field:
+    radial-gradient(circle at center, rgba(34, 211, 238, 0.12), rgba(34, 211, 238, 0.03) 22%, transparent 52%),
+    radial-gradient(circle at center, rgba(139, 124, 255, 0.04), transparent 46%);
+}

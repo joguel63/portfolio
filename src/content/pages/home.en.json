@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "eyebrow": "Full Stack & Systems Architect",
+    "title": "Miguel Muñoz",
+    "description": "Software Engineer",
+    "chips": [
+      "AI Agent Programming",
+      "High-Performance Systems"
+    ],
+    "primaryCta": {
+      "label": "View projects",
+      "href": "#proyectos"
+    },
+    "secondaryCta": {
+      "label": "Get in touch",
+        "href": "#contacto"
+    }
+  },
+  "about": {
+    "title": "About",
+    "heading": "Designing the future of autonomous engineering.",
+    "body": [
+      "With a focus on agentic programming, I build systems that do more than react to inputs: they reason and operate autonomously to solve complex engineering problems.",
+      "My background combines the robustness of systems architecture with the agility of modern interfaces. I strongly believe premium software is born at the intersection of technical performance and impeccable editorial aesthetics."
+    ],
+    "stats": [
+      {
+        "value": "8+",
+        "label": "Years of Exp."
+      },
+      {
+        "value": "40+",
+        "label": "AI Systems"
+      }
+    ],
+    "image": "/images/about/profilepicture.png",
+    "imageAlt": "Portrait of Miguel Munoz"
+  },
+  "stack": {
+    "title": "Tech Stack",
+    "intro": "High-Precision Tools"
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "Selected Work",
+    "sublabel": "Curated 2026"
+  },
+  "contact": {
+    "title": "Collaboration",
+    "heading": "Ready to scale your infrastructure?",
+    "description": "Currently available for technical consulting projects and the development of systems built on agentic AI.",
+    "primaryAction": {
+      "label": "Start a project",
+      "href": "mailto:hello@miguelmunoz.dev"
+    },
+    "secondaryAction": {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/miguelmunoz"
+    }
+  }
+}

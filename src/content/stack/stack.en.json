@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ai-agents",
+    "label": "AI & Agents",
+    "category": "Autonomy",
+    "order": 1,
+    "description": "Autonomous ecosystems and agentic workflows.",
+    "skills": ["LangChain", "AutoGPT", "LLMs"]
+  },
+  {
+    "id": "full-stack",
+    "label": "Full Stack",
+    "category": "Product",
+    "order": 2,
+    "description": "Reactive interfaces and scalable backends.",
+    "skills": ["React", "Next.js", "Node.js"]
+  },
+  {
+    "id": "infrastructure",
+    "label": "Infrastructure",
+    "category": "Systems",
+    "order": 3,
+    "description": "Distributed systems and cloud-native infrastructure.",
+    "skills": ["PostgreSQL", "Redis", "Docker"]
+  }
+]

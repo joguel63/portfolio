@@ -1,0 +1,15 @@
+# Stitch Screen References
+
+## Desktop
+
+- Title: `Miguel Muñoz — Portfolio Home (Language Switcher)`
+- Screen ID: `f9d8bbce25fe450691bab6f2b4ad4b41`
+- Screenshot URL: `https://lh3.googleusercontent.com/aida/ADBb0ujKhLXg0K9SeXRqAKljf0UALTbsHvyBZy8eltywzU_LWiX2mgzpzUdSItC89UpvlgXli0AnVlrEl_71GwZLXfDsjLr2p8yjrbmwKJUCODofbRMOdTG6i2-kLZ3YK5IYBcImitesqEnrtUQ4p7Bt7zVQUbZjuXQhL8XrNx3Hrl_jOE8ytOdW41vrmh8dDH0f6dkzv7jMmdhLwL8jPbjSQFXui9bikU3kQbfwuSEKakDwltF09I5_wFq5ggyM`
+- HTML URL: `https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sX2MwNDQxZjQxZjRhMjRlY2ZiYmMwZTVlZGNmZmU5ZDU3EgsSBxCo96edowUYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjU3NTA4NTgwMzkxNTgxODM0MQ&filename=&opi=89354086`
+
+## Mobile
+
+- Title: `Miguel Muñoz — Portfolio Home (Optimized Mobile)`
+- Screen ID: `54e9e09e3a024af487a176063f4d05c9`
+- Screenshot URL: `https://lh3.googleusercontent.com/aida/ADBb0uiO1CUCCohNQrZ6p3NyYPjclMia3bVgudwL9qIBblBHGZFlFAMdsOakW06qEKSWuLW3r-YF-tS_IKEk3ueNegLuviX9d3UPhIfIo-a0zkNh14ojapMY1do1hnZukESkEY_UGctDj1sDRuw8PlFEBbpmQbD6W4QQH30yAKP6VKe0Y3pPhfe7ZEiRYQ59QK_d6ay53TQ-mbFHYigDufSAhqDkdzzRvzeGjb6ydPUTvRBKoBOT2ERdcx2Txef3`
+- HTML URL: `https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzJmODA5NjNiNzZlNTQ4OWM4OWE2YWEyOTFiYmIzODhmEgsSBxCo96edowUYAZIBJAoKcHJvamVjdF9pZBIWQhQxNjU3NTA4NTgwMzkxNTgxODM0MQ&filename=&opi=89354086`

@@ -1,0 +1,36 @@
+:root {
+  --font-heading: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Cascadia Code", monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.0625rem;
+  --font-size-lg: 1.3125rem;
+  --font-size-xl: clamp(2.15rem, 6vw, 3.65rem);
+  --font-size-hero: clamp(3.3rem, 8.2vw, 6.4rem);
+  --font-size-hero-support: clamp(1.42rem, 2.85vw, 2.1rem);
+  --font-size-heading-lg: clamp(1.65rem, 4.4vw, 2.3rem);
+  --font-size-heading-md: clamp(1.18rem, 2.6vw, 1.48rem);
+  --font-size-heading-sm: 1rem;
+  --font-size-fallback-mark: clamp(2rem, 5vw, 3rem);
+  --font-leading-tight: 1;
+  --font-leading-snug: 1.12;
+  --font-leading-normal: 1.6;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-tracking-tight: -0.04em;
+  --font-tracking-normal: 0;
+  --font-tracking-brand: 0.02em;
+  --font-tracking-caps: 0.08em;
+  --font-tracking-wide: 0.1em;
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --font-size-hero: clamp(2.5rem, 14vw, 4.1rem);
+    --font-size-xl: clamp(1.8rem, 9vw, 2.45rem);
+  }
+}

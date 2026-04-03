@@ -1,0 +1,17 @@
+---
+import Badge from '../atoms/Badge.astro';
+
+interface Props {
+  year: string;
+  role: string;
+  stack: string[];
+}
+
+const { year, role, stack } = Astro.props as Props;
+---
+
+<div class="project-meta">
+  <Badge>{year}</Badge>
+  <Badge>{role}</Badge>
+  {stack.map((item) => <Badge>{item}</Badge>)}
+</div>

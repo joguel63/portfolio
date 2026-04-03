@@ -1,0 +1,5 @@
+:root {
+  --shadow-soft: 0 18px 42px rgba(0, 0, 0, 0.28);
+  --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.28);
+  --shadow-glow: 0 0 0 1px rgba(106, 220, 242, 0.14), 0 20px 48px rgba(106, 220, 242, 0.1);
+}

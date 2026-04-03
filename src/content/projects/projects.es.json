@@ -1,0 +1,57 @@
+[
+  {
+    "id": "cognitive-engine-v2",
+    "title": "Cognitive Engine v2.0",
+    "summary": "Arquitectura de agentes autónomos para optimización de infraestructuras críticas en tiempo real.",
+    "year": "2026",
+    "role": "Featured — Agéntica",
+    "stack": ["Agents", "Realtime", "Infrastructure"],
+    "featured": true,
+    "image": "/images/projects/cognitive-engine-v2.jpg",
+    "imageAlt": "Paisaje tecnológico abstracto con nodos de datos conectados y resaltados cian neón",
+    "links": {
+      "repo": {
+        "label": "Código",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      },
+      "caseStudy": {
+        "label": "Caso de estudio",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      }
+    }
+  },
+  {
+    "id": "nexus-dash",
+    "title": "Nexus Dash",
+    "summary": "Panel de control de sistemas distribuidos con enfoque en observabilidad avanzada.",
+    "year": "2026",
+    "role": "Observabilidad",
+    "stack": ["Dashboards", "Metrics", "Distributed Systems"],
+    "featured": false,
+    "image": "/images/projects/nexus-dash.jpg",
+    "imageAlt": "Render arquitectónico minimalista de un rack de servidores moderno con resplandor azul en un entorno oscuro",
+    "links": {
+      "demo": {
+        "label": "Demo",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      }
+    }
+  },
+  {
+    "id": "hyperscale-core",
+    "title": "HyperScale Core",
+    "summary": "Motor de procesamiento asíncrono diseñado para alta disponibilidad y baja latencia.",
+    "year": "2026",
+    "role": "Compute Layer",
+    "stack": ["Async", "Resilience", "Low Latency"],
+    "featured": false,
+    "image": "/images/projects/hyperscale-core.jpg",
+    "imageAlt": "Arte generativo con patrones geométricos e hilos de luz sobre fondo negro profundo",
+    "links": {
+      "caseStudy": {
+        "label": "Caso de estudio",
+        "url": "https://github.com/miguelmunoz/portfolio"
+      }
+    }
+  }
+]

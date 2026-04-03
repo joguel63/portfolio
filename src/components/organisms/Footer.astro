@@ -1,0 +1,47 @@
+---
+import type { AppLocale } from '../../lib/i18n/locale';
+
+interface Props {
+  locale: AppLocale;
+  siteName: string;
+  siteRole: string;
+  email: string;
+  github: string;
+  linkedin: string;
+}
+
+const { locale, siteName, siteRole, email, github, linkedin } = Astro.props as Props;
+const footerLinks = [
+  { href: github, label: 'GitHub' },
+  { href: linkedin, label: 'LinkedIn' },
+  { href: `mailto:${email}`, label: 'Email' },
+];
+const footerLead = `© 2026 ${siteName} — ${siteRole}.`;
+const footerTail =
+  locale === 'en'
+    ? 'AI Agent Programming.'
+    : 'Programación Agéntica con IA.';
+---
+
+<footer class="site-footer">
+  <div class="site-footer__content">
+    <p class="site-footer__line">
+      <span>{footerLead}</span>
+      <br class="site-footer__line-break" />
+      <span class="site-footer__line-tail">{footerTail}</span>
+    </p>
+
+    <nav class="site-footer__links" aria-label={`${siteName} footer links`}>
+      {footerLinks.map((link) => (
+        <a
+          href={link.href}
+          class="nav-link"
+          target={link.href.startsWith('http') ? '_blank' : undefined}
+          rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</footer>

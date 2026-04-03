@@ -1,0 +1,107 @@
+---
+import type { ProjectItemContent } from '../../lib/content/types/content';
+
+import Heading from '../atoms/Heading.astro';
+import StitchIcon from '../atoms/StitchIcon.astro';
+import Text from '../atoms/Text.astro';
+
+interface Props {
+  title: string;
+  intro: string;
+  sublabel?: string;
+  items: ProjectItemContent[];
+}
+
+const { title, intro, items } = Astro.props as Props;
+
+const featuredProject = items.find((item) => item.featured) ?? items[0];
+const supportingProjects = items.filter((item) => item.id !== featuredProject?.id).slice(0, 2);
+
+function getPrimaryLink(project: ProjectItemContent) {
+  return project.links.caseStudy ?? project.links.demo ?? project.links.repo;
+}
+---
+
+<section id="proyectos" class="section section--projects">
+  <div class="container projects">
+    <div class="section-header section-header--projects">
+      <div class="projects__header-copy">
+        <Heading as="h2" size="sm">{title}</Heading>
+        <Heading as="h3" size="xl">{intro}</Heading>
+      </div>
+    </div>
+
+    {featuredProject && (
+      <div class="projects__composition">
+        <a
+          class="projects__featured project-card__link-shell"
+          href={getPrimaryLink(featuredProject)?.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={getPrimaryLink(featuredProject)?.label
+            ? `${featuredProject.title} — ${getPrimaryLink(featuredProject)?.label}`
+            : featuredProject.title}
+        >
+          <article class="project-card project-card--featured">
+            <div class="media-frame project-card__media project-card__media--featured">
+              {featuredProject.image ? (
+                <img
+                  src={featuredProject.image}
+                  alt={featuredProject.imageAlt ?? featuredProject.title}
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="fallback-mark" aria-hidden="true">{featuredProject.year}</span>
+              )}
+
+              <div class="projects__featured-overlay">
+                <div class="projects__featured-copy">
+                  <Heading as="h3" size="lg" className="project-card__title project-card__title--featured">{featuredProject.title}</Heading>
+                  <Text size="lead" className="project-card__summary project-card__summary--featured">{featuredProject.summary}</Text>
+                </div>
+
+                <div class="projects__featured-meta">
+                  <span class="project-card__arrow" aria-hidden="true">
+                    <StitchIcon name="arrow_outward" className="project-card__arrow-icon" ariaHidden={true} />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <div class="projects__grid">
+          {supportingProjects.map((project) => {
+            const primaryLink = getPrimaryLink(project);
+
+            return (
+              <a
+                class="project-card project-card--support project-card__link-shell"
+                href={primaryLink?.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={primaryLink?.label ? `${project.title} — ${primaryLink.label}` : project.title}
+              >
+                <article class="project-card__support-article">
+                  <div class="media-frame project-card__media project-card__media--support">
+                    {project.image ? (
+                      <img src={project.image} alt={project.imageAlt ?? project.title} loading="lazy" decoding="async" />
+                    ) : (
+                      <span class="fallback-mark" aria-hidden="true">{project.year}</span>
+                    )}
+                  </div>
+
+                  <div class="project-card__body project-card__body--support">
+                    <Heading as="h3" size="md" className="project-card__title project-card__title--support">{project.title}</Heading>
+                    <Text className="project-card__summary project-card__summary--support">{project.summary}</Text>
+                  </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
