@@ -5,6 +5,7 @@ import { getHeroMotionProfile, type HeroMotionProfile, type HeroMotionVariant } 
 const HERO_SELECTORS = {
   core: '[data-hero-core]',
   descriptors: '[data-hero-descriptors]',
+  eyebrow: '[data-hero-eyebrow]',
   orbits: '[data-hero-orbit]',
   rings: '[data-hero-ring]',
   satellites: '[data-hero-satellite]',
@@ -16,6 +17,7 @@ const HERO_SELECTORS = {
 type HeroIntroElements = {
   core: HTMLElement;
   descriptors: HTMLElement;
+  eyebrow: HTMLElement;
   orbits: HTMLElement[];
   rings: HTMLElement[];
   satellites: HTMLElement[];
@@ -103,6 +105,7 @@ function resolveHeroIntroElements(root: HTMLElement): HeroIntroElements {
   return {
     core: queryRequiredElement(root, HERO_SELECTORS.core),
     descriptors: queryRequiredElement(root, HERO_SELECTORS.descriptors),
+    eyebrow: queryRequiredElement(root, HERO_SELECTORS.eyebrow),
     orbits: queryElementList(root, HERO_SELECTORS.orbits),
     rings: queryElementList(root, HERO_SELECTORS.rings),
     satellites: queryElementList(root, HERO_SELECTORS.satellites),
@@ -172,7 +175,7 @@ export function createHeroIntro(root: HTMLElement, variant: HeroMotionVariant): 
   gsap.set(elements.rings, { autoAlpha: 0, scale: profile.ringStartScale });
   gsap.set(elements.satellites, { autoAlpha: 0, scale: profile.satelliteScale });
   gsap.set(elements.orbits, { rotate: 0 });
-  gsap.set([elements.title, elements.support, elements.descriptors], {
+  gsap.set([elements.eyebrow, elements.title, elements.support, elements.descriptors], {
     autoAlpha: 0,
     y: profile.textOffset,
   });
@@ -222,7 +225,7 @@ export function createHeroIntro(root: HTMLElement, variant: HeroMotionVariant): 
 
   // Phase E: Hero Content Entrance.
   timeline.fromTo(
-    [elements.title, elements.support, elements.descriptors],
+    [elements.eyebrow, elements.title, elements.support, elements.descriptors],
     { autoAlpha: 0, y: profile.textOffset },
     { autoAlpha: 1, duration: profile.textDuration, stagger: 0.08, y: 0 },
     '>-0.04',

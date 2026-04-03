@@ -35,6 +35,7 @@ body[data-hero-intro-state="active"]::-webkit-scrollbar {
 }
 
 body[data-hero-intro-state="active"] [data-hero-title],
+body[data-hero-intro-state="active"] [data-hero-eyebrow],
 body[data-hero-intro-state="active"] [data-hero-support],
 body[data-hero-intro-state="active"] [data-hero-descriptors],
 body[data-hero-intro-state="active"] [data-hero-scroll] {
@@ -42,6 +43,7 @@ body[data-hero-intro-state="active"] [data-hero-scroll] {
 }
 
 body[data-hero-intro-state="active"] [data-hero-title],
+body[data-hero-intro-state="active"] [data-hero-eyebrow],
 body[data-hero-intro-state="active"] [data-hero-support],
 body[data-hero-intro-state="active"] [data-hero-descriptors] {
   transform: translate3d(0, 1.5rem, 0);
@@ -140,6 +142,7 @@ body[data-hero-intro-state="active"] [data-hero-scroll] {
 
 @media (prefers-reduced-motion: reduce) {
   .hero [data-hero-title],
+  .hero [data-hero-eyebrow],
   .hero [data-hero-support],
   .hero [data-hero-descriptors],
   .hero [data-hero-scroll] {

@@ -83,6 +83,7 @@ describe('hero intro animation contract', () => {
   it('wires hero intro bootstrap hooks and active-state styles', () => {
     expect(heroSource).toContain('data-hero-root');
     expect(heroSource).toContain('document.body.dataset.heroIntroEligible');
+    expect(heroSource).toContain('data-hero-eyebrow');
     expect(heroSource).toContain('data-hero-title');
     expect(heroSource).toContain('data-hero-support');
     expect(heroSource).toContain('data-hero-descriptors');
