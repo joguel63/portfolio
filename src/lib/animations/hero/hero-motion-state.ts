@@ -1,42 +1,62 @@
 const HERO_INTRO_STATE_ATTRIBUTE = 'data-hero-intro-state';
 const HERO_HEADER_SELECTOR = '.site-header';
+const HERO_SCROLL_SELECTOR = '[data-hero-scroll]';
+
+type HeroIntroState = 'pending' | 'active' | 'released';
 
 function getBody() {
   return document.body;
 }
 
-function setHeroIntroState(state: 'pending' | 'active' | 'released') {
+function getHeroIntroState(): HeroIntroState | undefined {
+  return getBody().dataset.heroIntroState as HeroIntroState | undefined;
+}
+
+function setHeroIntroState(state: HeroIntroState) {
+  if (getHeroIntroState() === state) {
+    return;
+  }
+
   getBody().dataset.heroIntroState = state;
 }
 
-function setHeaderInert(isInert: boolean) {
-  const header = getBody().querySelector(HERO_HEADER_SELECTOR);
+function setElementInert(selector: string, isInert: boolean) {
+  const element = getBody().querySelector(selector);
 
-  if (!header) {
+  if (!element) {
     return;
   }
 
   if (isInert) {
-    header.setAttribute('inert', '');
+    element.setAttribute('inert', '');
     return;
   }
 
-  header.removeAttribute('inert');
+  element.removeAttribute('inert');
+}
+
+function setGatedAffordancesInert(isInert: boolean) {
+  setElementInert(HERO_HEADER_SELECTOR, isInert);
+  setElementInert(HERO_SCROLL_SELECTOR, isInert);
 }
 
 export function enterPendingIntro() {
-  setHeaderInert(false);
+  setGatedAffordancesInert(false);
   setHeroIntroState('pending');
 }
 
 export function activateIntro() {
+  if (getHeroIntroState() === 'released') {
+    return;
+  }
+
   setHeroIntroState('active');
-  setHeaderInert(true);
+  setGatedAffordancesInert(true);
 }
 
 export function releaseIntro() {
+  setGatedAffordancesInert(false);
   setHeroIntroState('released');
-  setHeaderInert(false);
 }
 
 export function failOpenIntro() {

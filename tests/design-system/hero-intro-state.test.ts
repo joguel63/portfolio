@@ -6,9 +6,11 @@ type HeaderShim = {
   setAttribute(name: string, value: string): void;
 };
 
+type HeroAffordanceShim = HeaderShim;
+
 type BodyShim = {
   dataset: Record<string, string | undefined>;
-  querySelector(selector: string): HeaderShim | null;
+  querySelector(selector: string): HeaderShim | HeroAffordanceShim | null;
 };
 
 function createHeaderShim(): HeaderShim {
@@ -30,6 +32,7 @@ function createHeaderShim(): HeaderShim {
 function createBodyShim() {
   const states: string[] = [];
   const header = createHeaderShim();
+  const scroll = createHeaderShim();
   const dataset = {} as Record<string, string | undefined>;
 
   Object.defineProperty(dataset, 'heroIntroState', {
@@ -50,11 +53,19 @@ function createBodyShim() {
   const body: BodyShim = {
     dataset,
     querySelector(selector) {
-      return selector === '.site-header' ? header : null;
+      if (selector === '.site-header') {
+        return header;
+      }
+
+      if (selector === '[data-hero-scroll]') {
+        return scroll;
+      }
+
+      return null;
     },
   };
 
-  return { body, header, states };
+  return { body, header, scroll, states };
 }
 
 describe('hero intro state lifecycle', () => {
@@ -85,8 +96,8 @@ describe('hero intro state lifecycle', () => {
     expect(documentShim.body.dataset.heroIntroState).toBe('released');
   });
 
-  it('activateIntro is the only state that locks the header', async () => {
-    const { body, header } = createBodyShim();
+  it('desktop lifecycle transitions pending to active to released', async () => {
+    const { body, header, scroll } = createBodyShim();
     const documentShim = { body };
 
     vi.stubGlobal('document', documentShim);
@@ -98,14 +109,68 @@ describe('hero intro state lifecycle', () => {
     enterPendingIntro();
     expect(documentShim.body.dataset.heroIntroState).toBe('pending');
     expect(header.hasAttribute('inert')).toBe(false);
+    expect(scroll.hasAttribute('inert')).toBe(false);
 
     activateIntro();
     expect(documentShim.body.dataset.heroIntroState).toBe('active');
     expect(header.hasAttribute('inert')).toBe(true);
+    expect(scroll.hasAttribute('inert')).toBe(true);
 
     releaseIntro();
     expect(documentShim.body.dataset.heroIntroState).toBe('released');
     expect(header.hasAttribute('inert')).toBe(false);
+    expect(scroll.hasAttribute('inert')).toBe(false);
+  });
+
+  it('releaseIntro and failOpenIntro are idempotent', async () => {
+    const { body, header, scroll, states } = createBodyShim();
+    const documentShim = { body };
+
+    vi.stubGlobal('document', documentShim);
+
+    const { activateIntro, failOpenIntro, releaseIntro } = await import(
+      '../../src/lib/animations/hero/hero-motion-state'
+    );
+
+    activateIntro();
+    releaseIntro();
+    releaseIntro();
+    failOpenIntro();
+    failOpenIntro();
+
+    expect(documentShim.body.dataset.heroIntroState).toBe('released');
+    expect(header.hasAttribute('inert')).toBe(false);
+    expect(scroll.hasAttribute('inert')).toBe(false);
+    expect(states.filter((state) => state === 'released')).toHaveLength(1);
+  });
+
+  it('initHeroIntro desktop orchestration activates, plays, and releases', async () => {
+    const { body, states } = createBodyShim();
+    const documentShim = { body };
+    const play = vi.fn().mockResolvedValue(undefined);
+
+    vi.stubGlobal('document', documentShim);
+    vi.stubGlobal('window', {
+      matchMedia: vi.fn().mockImplementation((query: string) => ({
+        matches: false,
+        media: query,
+      })),
+    });
+
+    vi.doMock('../../src/lib/animations/hero/create-hero-intro', () => ({
+      createHeroIntro: vi.fn(() => ({
+        timeline: {},
+        play,
+        destroy: vi.fn(),
+      })),
+    }));
+
+    const { initHeroIntro } = await import('../../src/lib/animations/hero/init-hero-intro');
+
+    await initHeroIntro({} as HTMLElement);
+
+    expect(play).toHaveBeenCalledTimes(1);
+    expect(states).toEqual(['pending', 'active', 'released']);
   });
 
   it('initHeroIntro reduced-motion path never enters active', async () => {
@@ -121,10 +186,39 @@ describe('hero intro state lifecycle', () => {
 
     const { initHeroIntro } = await import('../../src/lib/animations/hero/init-hero-intro');
 
-    initHeroIntro({} as HTMLElement);
+    await initHeroIntro({} as HTMLElement);
 
     expect(documentShim.body.dataset.heroIntroState).toBe('released');
-    expect(states).toContain('pending');
-    expect(states).not.toContain('active');
+    expect(states).toEqual(['pending', 'released']);
+  });
+
+  it('initHeroIntro fail-open path destroys the controller and releases', async () => {
+    const { body, states } = createBodyShim();
+    const documentShim = { body };
+    const destroy = vi.fn();
+    const play = vi.fn().mockRejectedValue(new Error('boom'));
+
+    vi.stubGlobal('document', documentShim);
+    vi.stubGlobal('window', {
+      matchMedia: vi.fn().mockImplementation((query: string) => ({
+        matches: false,
+        media: query,
+      })),
+    });
+
+    vi.doMock('../../src/lib/animations/hero/create-hero-intro', () => ({
+      createHeroIntro: vi.fn(() => ({
+        timeline: {},
+        play,
+        destroy,
+      })),
+    }));
+
+    const { initHeroIntro } = await import('../../src/lib/animations/hero/init-hero-intro');
+
+    await initHeroIntro({} as HTMLElement);
+
+    expect(destroy).toHaveBeenCalledTimes(1);
+    expect(states).toEqual(['pending', 'active', 'released']);
   });
 });

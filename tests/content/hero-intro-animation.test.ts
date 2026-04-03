@@ -7,6 +7,7 @@ import { describe, expect, it } from 'vitest';
 import heroOrbSource from '../../src/components/atoms/HeroOrb.astro?raw';
 import homeTemplateSource from '../../src/components/templates/HomeTemplate.astro?raw';
 import configSource from '../../src/lib/animations/hero/hero-motion-config.ts?raw';
+import createSource from '../../src/lib/animations/hero/create-hero-intro.ts?raw';
 import heroSource from '../../src/components/organisms/HeroSection.astro?raw';
 import initSource from '../../src/lib/animations/hero/init-hero-intro.ts?raw';
 import layoutSource from '../../src/layouts/BaseLayout.astro?raw';
@@ -34,11 +35,18 @@ describe('hero intro animation contract', () => {
 
   it('defines the runtime hero motion module skeleton', () => {
     expect(initSource).toContain('initHeroIntro');
+    expect(createSource).toContain('export function createHeroIntro');
+    expect(createSource).toContain('play(): Promise<void>');
+    expect(createSource).toContain('destroy()');
     expect(stateSource).toContain('enterPendingIntro');
     expect(stateSource).toContain('activateIntro');
     expect(stateSource).toContain('releaseIntro');
     expect(stateSource).toContain('failOpenIntro');
     expect(stateSource).toContain('data-hero-intro-state');
+    expect(stateSource).toContain('inert');
+    expect(initSource).toContain('createHeroIntro');
+    expect(initSource).toContain('releaseIntro()');
+    expect(initSource).toContain('failOpenIntro()');
     expect(configSource).toContain('48rem');
     expect(configSource).toContain('prefers-reduced-motion');
   });
