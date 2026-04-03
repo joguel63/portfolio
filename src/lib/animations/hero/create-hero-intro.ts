@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-type HeroMotionVariant = 'desktop' | 'mobile' | 'reduced';
+import { getHeroMotionProfile, type HeroMotionProfile, type HeroMotionVariant } from './hero-motion-config';
 
 const HERO_SELECTORS = {
   core: '[data-hero-core]',
@@ -25,11 +25,21 @@ type HeroIntroElements = {
 };
 
 type HeroIntroProfile = {
-  ambientOrbitDuration: number;
-  ambientPulseDuration: number;
+  activeOrbitCount: number;
+  ambientOrbitBaseDuration: number;
+  ambientOrbitDurationStep: number;
   coreDuration: number;
+  coreStartAlpha: number;
+  coreStartScale: number;
+  orbitSettleAngle: number;
   orbitSettleDuration: number;
+  ringBaseDuration: number;
+  ringDurationStep: number;
+  ringStartScale: number;
   satelliteDuration: number;
+  satelliteScale: number;
+  satelliteStagger: number;
+  scrollDuration: number;
   scrollOffset: number;
   textDuration: number;
   textOffset: number;
@@ -50,29 +60,21 @@ function createCancellationError() {
 }
 
 function getProfile(variant: HeroMotionVariant): HeroIntroProfile {
-  if (variant === 'mobile') {
-    return {
-      ambientOrbitDuration: 10,
-      ambientPulseDuration: 2.4,
-      coreDuration: 0.2,
-      orbitSettleDuration: 0.22,
-      satelliteDuration: 0.24,
-      scrollOffset: 10,
-      textDuration: 0.32,
-      textOffset: 18,
-    };
+  const profile: HeroMotionProfile = getHeroMotionProfile(variant);
+
+  if (variant === 'desktop') {
+    return profile;
   }
 
-  return {
-    ambientOrbitDuration: 12,
-    ambientPulseDuration: 2.8,
-    coreDuration: 0.24,
-    orbitSettleDuration: 0.3,
-    satelliteDuration: 0.3,
-    scrollOffset: 14,
-    textDuration: 0.38,
-    textOffset: 24,
-  };
+  if (variant === 'reduced') {
+    return profile;
+  }
+
+  if (variant === 'mobile') {
+    return profile;
+  }
+
+  return profile;
 }
 
 function queryRequiredElement(root: HTMLElement, selector: string) {
@@ -112,21 +114,14 @@ function resolveHeroIntroElements(root: HTMLElement): HeroIntroElements {
 
 function createAmbientLoops(elements: HeroIntroElements, profile: HeroIntroProfile) {
   return [
-    ...elements.orbits.map((orbit, index) =>
+    ...elements.orbits.slice(0, profile.activeOrbitCount).map((orbit, index) =>
       gsap.to(orbit, {
-        duration: profile.ambientOrbitDuration + index * 1.2,
+        duration: profile.ambientOrbitBaseDuration + index * profile.ambientOrbitDurationStep,
         ease: 'none',
         repeat: -1,
         rotate: index % 2 === 0 ? '+=360' : '-=360',
       }),
     ),
-    gsap.to(elements.core, {
-      duration: profile.ambientPulseDuration,
-      ease: 'sine.inOut',
-      repeat: -1,
-      scale: 1.04,
-      yoyo: true,
-    }),
   ];
 }
 
@@ -173,9 +168,9 @@ export function createHeroIntro(root: HTMLElement, variant: HeroMotionVariant): 
     paused: true,
   });
 
-  gsap.set(elements.core, { autoAlpha: 0.2, scale: 0.55 });
-  gsap.set(elements.rings, { autoAlpha: 0, scale: 0.4 });
-  gsap.set(elements.satellites, { autoAlpha: 0, scale: 0.5 });
+  gsap.set(elements.core, { autoAlpha: profile.coreStartAlpha, scale: profile.coreStartScale });
+  gsap.set(elements.rings, { autoAlpha: 0, scale: profile.ringStartScale });
+  gsap.set(elements.satellites, { autoAlpha: 0, scale: profile.satelliteScale });
   gsap.set(elements.orbits, { rotate: 0 });
   gsap.set([elements.title, elements.support, elements.descriptors], {
     autoAlpha: 0,
@@ -186,7 +181,7 @@ export function createHeroIntro(root: HTMLElement, variant: HeroMotionVariant): 
   // Phase A: Silent Origin.
   timeline.fromTo(
     elements.core,
-    { autoAlpha: 0.2, scale: 0.55 },
+    { autoAlpha: profile.coreStartAlpha, scale: profile.coreStartScale },
     { autoAlpha: 1, duration: profile.coreDuration, scale: 1 },
   );
 
@@ -194,29 +189,36 @@ export function createHeroIntro(root: HTMLElement, variant: HeroMotionVariant): 
   elements.rings.forEach((ring, index) => {
     timeline.fromTo(
       ring,
-      { autoAlpha: 0, scale: 0.4 },
-      { autoAlpha: 1, duration: 0.22 + index * 0.05, scale: 1 },
+      { autoAlpha: 0, scale: profile.ringStartScale },
+      { autoAlpha: 1, duration: profile.ringBaseDuration + index * profile.ringDurationStep, scale: 1 },
       index === 0 ? '>-0.02' : '<0.08',
     );
   });
 
   // Phase C: Secondary Orb Arrival.
-  timeline.fromTo(
-    elements.satellites,
-    { autoAlpha: 0, scale: 0.5 },
-    { autoAlpha: 1, duration: profile.satelliteDuration, scale: 1, stagger: 0.08 },
-    '>-0.04',
-  );
+  if (variant !== 'reduced') {
+    timeline.fromTo(
+      elements.satellites,
+      { autoAlpha: 0, scale: profile.satelliteScale },
+      { autoAlpha: 1, duration: profile.satelliteDuration, scale: 1, stagger: profile.satelliteStagger },
+      '>-0.04',
+    );
+  }
 
   // Phase D: Live System Activation.
-  timeline.to(
-    elements.orbits,
-    { duration: profile.orbitSettleDuration, rotate: (_, target) => target.dataset.heroOrbit === 'beta' ? -24 : 24 },
-    '<',
-  );
-  timeline.add(() => {
-    startAmbientLoops();
-  });
+  if (variant !== 'reduced') {
+    timeline.to(
+      elements.orbits.slice(0, profile.activeOrbitCount),
+      {
+        duration: profile.orbitSettleDuration,
+        rotate: (_, target) => target.dataset.heroOrbit === 'beta' ? -profile.orbitSettleAngle : profile.orbitSettleAngle,
+      },
+      '<',
+    );
+    timeline.add(() => {
+      startAmbientLoops();
+    });
+  }
 
   // Phase E: Hero Content Entrance.
   timeline.fromTo(
@@ -228,7 +230,7 @@ export function createHeroIntro(root: HTMLElement, variant: HeroMotionVariant): 
   timeline.fromTo(
     elements.scroll,
     { autoAlpha: 0, y: profile.scrollOffset },
-    { autoAlpha: 1, duration: 0.24, y: 0 },
+    { autoAlpha: 1, duration: profile.scrollDuration, y: 0 },
     '<0.16',
   );
 

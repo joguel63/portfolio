@@ -43,6 +43,7 @@
   border-radius: 50%;
   background: rgba(34, 211, 238, 1);
   box-shadow: 0 0 2.5rem 0.625rem rgba(34, 211, 238, 0.4);
+  animation: hero-orb-core-breathe 3.2s ease-in-out infinite;
 }
 
 .hero__orb-rings {
@@ -111,6 +112,31 @@
     radial-gradient(circle, rgba(165, 243, 252, 0.95) 0%, rgba(34, 211, 238, 0.9) 55%, rgba(34, 211, 238, 0.2) 100%);
   box-shadow: 0 0 1.5rem rgba(34, 211, 238, 0.35);
   filter: blur(1px);
+  animation: hero-orb-satellite-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes hero-orb-core-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 2.25rem 0.5625rem rgba(34, 211, 238, 0.34);
+  }
+
+  50% {
+    box-shadow: 0 0 2.75rem 0.75rem rgba(34, 211, 238, 0.48);
+  }
+}
+
+@keyframes hero-orb-satellite-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    box-shadow: 0 0 1.1rem rgba(34, 211, 238, 0.24);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 1.6rem rgba(34, 211, 238, 0.36);
+  }
 }
 
 .hero__orb-orbit--alpha .hero__orb-satellite {
@@ -158,5 +184,17 @@
   .hero__orb-satellite {
     box-shadow: 0 0 1rem rgba(34, 211, 238, 0.28);
     opacity: 0.88;
+    animation-duration: 3s;
+  }
+
+  .hero__orb-core {
+    animation-duration: 3.8s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__orb-core,
+  .hero__orb-satellite {
+    animation-duration: 4.8s;
   }
 }

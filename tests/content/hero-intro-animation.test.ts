@@ -23,6 +23,10 @@ const headerCssSource = readFileSync(
   fileURLToPath(new URL('../../src/styles/components/header.css', import.meta.url)),
   'utf8',
 );
+const heroOrbCssSource = readFileSync(
+  fileURLToPath(new URL('../../src/styles/components/hero-orb.css', import.meta.url)),
+  'utf8',
+);
 
 describe('hero intro animation contract', () => {
   it('declares hero intro eligibility only on the two home pages via the layout', () => {
@@ -49,6 +53,20 @@ describe('hero intro animation contract', () => {
     expect(initSource).toContain('failOpenIntro()');
     expect(configSource).toContain('48rem');
     expect(configSource).toContain('prefers-reduced-motion');
+  });
+
+  it('defines explicit desktop, mobile, and reduced motion variant contracts', () => {
+    expect(configSource).toContain('HERO_MOBILE_BREAKPOINT');
+    expect(configSource).toContain('HERO_REDUCED_MOTION_QUERY');
+    expect(createSource).toContain('desktop');
+    expect(createSource).toContain('mobile');
+    expect(createSource).toContain('reduced');
+    expect(createSource).toContain("variant === 'mobile'");
+    expect(createSource).toContain("variant === 'reduced'");
+    expect(heroOrbCssSource).toContain('@media (max-width: 48rem)');
+    expect(heroOrbCssSource).toContain('@keyframes hero-orb-core-breathe');
+    expect(heroOrbCssSource).toContain('@keyframes hero-orb-satellite-pulse');
+    expect(heroCssSource).toContain('@media (prefers-reduced-motion: reduce)');
   });
 
   it('keeps explicit orb animation layers stable for selector-based motion hooks', () => {

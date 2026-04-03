@@ -138,6 +138,15 @@ body[data-hero-intro-state="active"] [data-hero-scroll] {
   background: linear-gradient(180deg, rgba(34, 211, 238, 0.42), transparent);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero [data-hero-title],
+  .hero [data-hero-support],
+  .hero [data-hero-descriptors],
+  .hero [data-hero-scroll] {
+    transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+  }
+}
+
 
 @media (max-width: 48rem) {
   .hero {
