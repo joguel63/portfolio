@@ -88,6 +88,9 @@ describe('hero intro animation contract', () => {
     expect(heroSource).toContain('data-hero-descriptors');
     expect(heroSource).toContain('data-hero-scroll');
     expect(heroSource).toContain('initHeroIntro');
+    expect(heroSource).toContain("import { initHeroIntro } from '../../lib/animations/hero/init-hero-intro.ts';");
+    expect(heroSource).not.toContain('?url');
+    expect(heroSource).not.toContain('import(initHeroIntroModuleUrl)');
     expect(heroCssSource).toContain('data-hero-intro-state');
     expect(headerCssSource).toContain('data-hero-intro-state="active"');
   });

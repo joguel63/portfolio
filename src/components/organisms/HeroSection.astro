@@ -1,7 +1,6 @@
 ---
 import type { AppLocale } from '../../lib/i18n/locale';
 import type { HomeHeroContent } from '../../lib/content/types/content';
-import initHeroIntroUrl from '../../lib/animations/hero/init-hero-intro.ts?url';
 
 import HeroOrb from '../atoms/HeroOrb.astro';
 import StitchIcon from '../atoms/StitchIcon.astro';
@@ -55,12 +54,12 @@ const scrollAriaLabel = locale === 'es' ? 'Ir a la sección sobre mí' : 'Scroll
   </div>
 </section>
 
-<script type="module" is:inline define:vars={{ initHeroIntroModuleUrl: initHeroIntroUrl }}>
+<script>
+  import { initHeroIntro } from '../../lib/animations/hero/init-hero-intro.ts';
+
   const root = document.querySelector('[data-hero-root]');
 
   if (root instanceof HTMLElement && document.body.dataset.heroIntroEligible === 'true') {
-    import(initHeroIntroModuleUrl).then(({ initHeroIntro }) => {
-      initHeroIntro(root);
-    });
+    initHeroIntro(root);
   }
 </script>
