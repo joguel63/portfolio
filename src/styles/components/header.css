@@ -4,6 +4,13 @@
   left: 0;
   right: 0;
   z-index: var(--layer-sticky-header);
+  transition: opacity var(--motion-duration-fast) var(--motion-easing-standard);
+}
+
+body[data-hero-intro-state="active"] .site-header {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .site-header__bar {

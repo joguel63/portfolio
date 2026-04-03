@@ -1,6 +1,7 @@
 ---
 import type { AppLocale } from '../../lib/i18n/locale';
 import type { HomeHeroContent } from '../../lib/content/types/content';
+import initHeroIntroUrl from '../../lib/animations/hero/init-hero-intro.ts?url';
 
 import HeroOrb from '../atoms/HeroOrb.astro';
 import StitchIcon from '../atoms/StitchIcon.astro';
@@ -16,17 +17,21 @@ const scrollAriaLabel = locale === 'es' ? 'Ir a la sección sobre mí' : 'Scroll
 ---
 
 <section id="hero" class="section">
-  <div class="hero hero--faithful">
+  <div class="hero hero--faithful" data-hero-root>
     <HeroOrb />
 
     <div class="hero__content">
       <span class="eyebrow">{hero.eyebrow}</span>
       <h1 class="heading heading--display hero__title">
-        <span class="hero__title-name">{hero.title}</span>
-        <span class="hero__title-support">{hero.description}</span>
+        <span class="hero__title-name" data-hero-title>{hero.title}</span>
+        <span class="hero__title-support" data-hero-support>{hero.description}</span>
       </h1>
 
-      <div class="hero__descriptor-list" aria-label={locale === 'es' ? 'Especialidades' : 'Specialties'}>
+      <div
+        class="hero__descriptor-list"
+        aria-label={locale === 'es' ? 'Especialidades' : 'Specialties'}
+        data-hero-descriptors
+      >
         {hero.chips.map((chip, index) => (
           <>
             {index > 0 && <span class="hero__descriptor-divider" aria-hidden="true"></span>}
@@ -43,9 +48,19 @@ const scrollAriaLabel = locale === 'es' ? 'Ir a la sección sobre mí' : 'Scroll
       </div>
     </div>
 
-    <a href="#sobre-mi" class="hero__scroll" aria-label={scrollAriaLabel}>
+    <a href="#sobre-mi" class="hero__scroll" aria-label={scrollAriaLabel} data-hero-scroll>
       <span class="hero__scroll-label">{scrollLabel}</span>
       <span class="hero__scroll-line"></span>
     </a>
   </div>
 </section>
+
+<script type="module" is:inline define:vars={{ initHeroIntroModuleUrl: initHeroIntroUrl }}>
+  const root = document.querySelector('[data-hero-root]');
+
+  if (root instanceof HTMLElement && document.body.dataset.heroIntroEligible === 'true') {
+    import(initHeroIntroModuleUrl).then(({ initHeroIntro }) => {
+      initHeroIntro(root);
+    });
+  }
+</script>

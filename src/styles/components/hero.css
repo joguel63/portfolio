@@ -11,6 +11,7 @@
   min-height: 100vh;
   padding: 5rem var(--page-gutter) 0;
   overflow: hidden;
+  scrollbar-gutter: stable;
 }
 
 .hero__content {
@@ -21,6 +22,33 @@
   width: min(100%, 80rem);
   position: relative;
   z-index: 1;
+}
+
+body[data-hero-intro-state="active"] {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+body[data-hero-intro-state="active"]::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body[data-hero-intro-state="active"] [data-hero-title],
+body[data-hero-intro-state="active"] [data-hero-support],
+body[data-hero-intro-state="active"] [data-hero-descriptors],
+body[data-hero-intro-state="active"] [data-hero-scroll] {
+  opacity: 0;
+}
+
+body[data-hero-intro-state="active"] [data-hero-title],
+body[data-hero-intro-state="active"] [data-hero-support],
+body[data-hero-intro-state="active"] [data-hero-descriptors] {
+  transform: translate3d(0, 1.5rem, 0);
+}
+
+body[data-hero-intro-state="active"] [data-hero-scroll] {
+  transform: translate3d(-50%, 1rem, 0);
 }
 
 .hero--faithful .hero__content {

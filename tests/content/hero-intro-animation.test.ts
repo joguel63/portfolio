@@ -1,13 +1,27 @@
+// @ts-expect-error Astro check in this repo does not include Node builtin typings for tests.
+import { readFileSync } from 'node:fs';
+// @ts-expect-error Astro check in this repo does not include Node builtin typings for tests.
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
 import heroOrbSource from '../../src/components/atoms/HeroOrb.astro?raw';
 import homeTemplateSource from '../../src/components/templates/HomeTemplate.astro?raw';
 import configSource from '../../src/lib/animations/hero/hero-motion-config.ts?raw';
+import heroSource from '../../src/components/organisms/HeroSection.astro?raw';
 import initSource from '../../src/lib/animations/hero/init-hero-intro.ts?raw';
 import layoutSource from '../../src/layouts/BaseLayout.astro?raw';
 import enIndexSource from '../../src/pages/en/index.astro?raw';
 import indexSource from '../../src/pages/index.astro?raw';
 import stateSource from '../../src/lib/animations/hero/hero-motion-state.ts?raw';
+
+const heroCssSource = readFileSync(
+  fileURLToPath(new URL('../../src/styles/components/hero.css', import.meta.url)),
+  'utf8',
+);
+const headerCssSource = readFileSync(
+  fileURLToPath(new URL('../../src/styles/components/header.css', import.meta.url)),
+  'utf8',
+);
 
 describe('hero intro animation contract', () => {
   it('declares hero intro eligibility only on the two home pages via the layout', () => {
@@ -38,5 +52,17 @@ describe('hero intro animation contract', () => {
     expect(heroOrbSource).toContain('hero__orb-orbit hero__orb-orbit--beta');
     expect(heroOrbSource).toContain('hero__orb-orbit hero__orb-orbit--gamma');
     expect(heroOrbSource).toContain('hero__orb-satellite');
+  });
+
+  it('wires hero intro bootstrap hooks and active-state styles', () => {
+    expect(heroSource).toContain('data-hero-root');
+    expect(heroSource).toContain('document.body.dataset.heroIntroEligible');
+    expect(heroSource).toContain('data-hero-title');
+    expect(heroSource).toContain('data-hero-support');
+    expect(heroSource).toContain('data-hero-descriptors');
+    expect(heroSource).toContain('data-hero-scroll');
+    expect(heroSource).toContain('initHeroIntro');
+    expect(heroCssSource).toContain('data-hero-intro-state');
+    expect(headerCssSource).toContain('data-hero-intro-state="active"');
   });
 });
