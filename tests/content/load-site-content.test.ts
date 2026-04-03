@@ -38,9 +38,30 @@ describe('loadSiteContent', () => {
     expect(en.home.hero.title).toBe('Miguel Muñoz');
     expect(es.site.assets.defaultOgImage).toBe('/images/og/home.svg');
     expect(es.site.assets.resume).toBeUndefined();
-    expect(es.stack[0].id).toBe('ia-agentes');
-    expect(es.stack[0].label).toBe('IA & Agentes');
-    expect(es.stack[0].skills).toEqual(['LangChain', 'AutoGPT', 'LLMs']);
+    expect(es.stack).toHaveLength(5);
+    expect(en.stack).toHaveLength(5);
+    expect(es.stack[0].id).toBe('frontend-engineering');
+    expect(es.stack[0].label).toBe('Frontend Engineering');
+    expect(es.stack[0].skills).toEqual([
+      'React',
+      'Next.js',
+      'Vite',
+      'TypeScript',
+      'Material UI',
+      'Tailwind',
+      'Ant Design',
+    ]);
+    expect(en.stack[0].id).toBe('frontend-engineering');
+    expect(en.stack[0].label).toBe('Frontend Engineering');
+    expect(en.stack[0].skills).toEqual([
+      'React',
+      'Next.js',
+      'Vite',
+      'TypeScript',
+      'Material UI',
+      'Tailwind',
+      'Ant Design',
+    ]);
     expect(es.projects[0].title).toBe('Cognitive Engine v2.0');
     expect(es.projects[0].role).toBe('Featured — Agéntica');
     expect(en.projects[0].imageAlt).toBe(

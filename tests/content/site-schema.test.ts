@@ -175,15 +175,23 @@ describe('siteSchema', () => {
   it('accepts stitch-style stack cards with inline skills', () => {
     const parsed = stackSchema.parse([
       {
-        id: 'ia-agentes',
-        label: 'IA & Agentes',
-        category: 'Autonomy',
+        id: 'frontend-engineering',
+        label: 'Frontend Engineering',
+        category: 'Frontend',
         order: 1,
-        description: 'Ecosistemas autónomos y flujos de trabajo agénticos.',
-        skills: ['LangChain', 'AutoGPT', 'LLMs'],
+        description: 'Interfaces modernas, performantes y escalables.',
+        skills: ['React', 'Next.js', 'Vite', 'TypeScript', 'Material UI', 'Tailwind', 'Ant Design'],
       },
     ]);
 
-    expect(parsed[0].skills).toEqual(['LangChain', 'AutoGPT', 'LLMs']);
+    expect(parsed[0].skills).toEqual([
+      'React',
+      'Next.js',
+      'Vite',
+      'TypeScript',
+      'Material UI',
+      'Tailwind',
+      'Ant Design',
+    ]);
   });
 });

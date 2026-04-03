@@ -68,8 +68,17 @@ describe('mapHomePage', () => {
       'Paisaje tecnológico abstracto con nodos de datos conectados y resaltados cian neón',
     );
     expect(page.projects.items[0].links.repo?.url).toContain('github.com');
-    expect(page.stack.items[0].label).toBe('IA & Agentes');
-    expect(page.stack.items[0].skills).toEqual(['LangChain', 'AutoGPT', 'LLMs']);
+    expect(page.stack.items).toHaveLength(5);
+    expect(page.stack.items[0].label).toBe('Frontend Engineering');
+    expect(page.stack.items[0].skills).toEqual([
+      'React',
+      'Next.js',
+      'Vite',
+      'TypeScript',
+      'Material UI',
+      'Tailwind',
+      'Ant Design',
+    ]);
     expect(page.contact.links.github).toContain('github.com');
     expect(page.about.imageAlt).toBe('Retrato de Miguel Munoz');
     expect(page.about.heading).toBe('Diseñando el futuro de la ingeniería autónoma.');
@@ -305,11 +314,18 @@ describe('mapHomePage', () => {
     expect(skillChipSource).toContain('class="panel skill-card stack-card"');
     expect(skillChipSource).toContain('class="stack-card__icon"');
     expect(skillChipSource).toContain('class="cluster stack-card__tags"');
+    expect(skillChipSource).toContain("Frontend: 'layers'");
+    expect(skillChipSource).toContain("Backend: 'terminal'");
+    expect(skillChipSource).toContain("Automation: 'neurology'");
+    expect(skillChipSource).toContain("Cloud: 'settings_input_component'");
+    expect(skillChipSource).toContain("Data: 'database'");
   });
 
   it('keeps the stack intro at 30px and only highlights cards on hover', () => {
     expect(stackStylesSource).toContain('.section-header--stack h2');
     expect(stackStylesSource).toContain('font-size: 30px');
+    expect(stackStylesSource).toContain('.stack__item');
+    expect(stackStylesSource).toContain('height: 100%');
     expect(stackStylesSource).toContain('.stack-card:hover');
     expect(stackStylesSource).toContain('.stack-card:hover .stack-card__icon');
     expect(stackStylesSource).not.toContain('.stack__item:first-child .stack-card');

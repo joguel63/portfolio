@@ -14,9 +14,11 @@ interface Props {
 const { label, category, description, skills } = Astro.props as Props;
 
 const iconMap: Record<string, string> = {
-  Autonomy: 'neurology',
-  Product: 'layers',
-  Systems: 'database',
+  Frontend: 'layers',
+  Backend: 'terminal',
+  Automation: 'neurology',
+  Cloud: 'settings_input_component',
+  Data: 'database',
 };
 
 const iconLabel = iconMap[category] ?? 'terminal';

@@ -1,26 +1,42 @@
 [
   {
-    "id": "ai-agents",
-    "label": "AI & Agents",
-    "category": "Autonomy",
+    "id": "frontend-engineering",
+    "label": "Frontend Engineering",
+    "category": "Frontend",
     "order": 1,
-    "description": "Autonomous ecosystems and agentic workflows.",
-    "skills": ["LangChain", "AutoGPT", "LLMs"]
+    "description": "Modern, performant, and scalable interfaces.",
+    "skills": ["React", "Next.js", "Vite", "TypeScript", "Material UI", "Tailwind", "Ant Design"]
   },
   {
-    "id": "full-stack",
-    "label": "Full Stack",
-    "category": "Product",
+    "id": "backend-apis",
+    "label": "Backend & APIs",
+    "category": "Backend",
     "order": 2,
-    "description": "Reactive interfaces and scalable backends.",
-    "skills": ["React", "Next.js", "Node.js"]
+    "description": "Robust architecture and scalable services.",
+    "skills": ["Node.js", "NestJS", "Express", "Prisma ORM", "REST APIs"]
   },
   {
-    "id": "infrastructure",
-    "label": "Infrastructure",
-    "category": "Systems",
+    "id": "ai-automation",
+    "label": "AI & Automation",
+    "category": "Automation",
     "order": 3,
-    "description": "Distributed systems and cloud-native infrastructure.",
-    "skills": ["PostgreSQL", "Redis", "Docker"]
+    "description": "Autonomous ecosystems and intelligent workflows.",
+    "skills": ["LangChain", "LLMs", "Agents", "RAG"]
+  },
+  {
+    "id": "cloud-infrastructure",
+    "label": "Cloud & Infrastructure",
+    "category": "Cloud",
+    "order": 4,
+    "description": "Deployment, containers, and distributed systems.",
+    "skills": ["Docker", "AWS", "OpenShift", "Azure", "CI/CD"]
+  },
+  {
+    "id": "databases",
+    "label": "Databases",
+    "category": "Data",
+    "order": 5,
+    "description": "Relational and NoSQL data management.",
+    "skills": ["PostgreSQL", "MongoDB", "DynamoDB"]
   }
 ]
