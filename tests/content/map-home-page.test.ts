@@ -249,9 +249,14 @@ describe('mapHomePage', () => {
     expect(heroSource).toContain('<HeroOrb />');
     expect(heroOrbSource).toContain('class="hero__orb"');
     expect(heroOrbSource).toContain('class="hero__orb-core"');
-    expect(heroOrbSource).toContain('class="hero__orb-pulse hero__orb-pulse--inner"');
-    expect(heroOrbSource).toContain('class="hero__orb-pulse hero__orb-pulse--middle"');
-    expect(heroOrbSource).toContain('class="hero__orb-pulse hero__orb-pulse--outer"');
+    expect(heroOrbSource).toContain('class="hero__orb-rings"');
+    expect(heroOrbSource).toContain('class="hero__orb-ring hero__orb-ring--inner"');
+    expect(heroOrbSource).toContain('class="hero__orb-ring hero__orb-ring--middle"');
+    expect(heroOrbSource).toContain('class="hero__orb-ring hero__orb-ring--outer"');
+    expect(heroOrbSource).toContain('class="hero__orb-orbit hero__orb-orbit--alpha"');
+    expect(heroOrbSource).toContain('class="hero__orb-orbit hero__orb-orbit--beta"');
+    expect(heroOrbSource).toContain('class="hero__orb-orbit hero__orb-orbit--gamma"');
+    expect(heroOrbSource).toContain('class="hero__orb-satellite"');
     expect(heroOrbStylesSource).toContain('.hero__orb');
     expect(heroSource).toContain('class="hero__descriptor-list"');
     expect(heroSource).toContain('class="hero__scroll-label"');

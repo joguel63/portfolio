@@ -11,6 +11,7 @@
   min-height: 100vh;
   padding: 5rem var(--page-gutter) 0;
   overflow: hidden;
+  scrollbar-gutter: stable;
 }
 
 .hero__content {
@@ -21,6 +22,30 @@
   width: min(100%, 80rem);
   position: relative;
   z-index: 1;
+}
+
+body[data-hero-intro-state="active"] {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+body[data-hero-intro-state="active"] [data-hero-title],
+body[data-hero-intro-state="active"] [data-hero-eyebrow],
+body[data-hero-intro-state="active"] [data-hero-support],
+body[data-hero-intro-state="active"] [data-hero-descriptors],
+body[data-hero-intro-state="active"] [data-hero-scroll] {
+  opacity: 0;
+}
+
+body[data-hero-intro-state="active"] [data-hero-title],
+body[data-hero-intro-state="active"] [data-hero-eyebrow],
+body[data-hero-intro-state="active"] [data-hero-support],
+body[data-hero-intro-state="active"] [data-hero-descriptors] {
+  transform: translate3d(0, 1.5rem, 0);
+}
+
+body[data-hero-intro-state="active"] [data-hero-scroll] {
+  transform: translate3d(-50%, 1rem, 0);
 }
 
 .hero--faithful .hero__content {
@@ -108,6 +133,38 @@
   width: 1px;
   height: 3rem;
   background: linear-gradient(180deg, rgba(34, 211, 238, 0.42), transparent);
+  transform-origin: top center;
+}
+
+body[data-hero-intro-state="released"] [data-hero-scroll] .hero__scroll-line {
+  animation: hero-scroll-line-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-line-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scaleY(0.88);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero [data-hero-title],
+  .hero [data-hero-eyebrow],
+  .hero [data-hero-support],
+  .hero [data-hero-descriptors],
+  .hero [data-hero-scroll] {
+    transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+  }
+
+  body[data-hero-intro-state="released"] [data-hero-scroll] .hero__scroll-line {
+    animation-duration: 4.6s;
+  }
 }
 
 

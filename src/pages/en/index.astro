@@ -16,6 +16,7 @@ const page = mapHomePage('en', content);
   canonicalPath="/en/"
   ogImage={page.seo.ogImage}
   defaultOgImage={content.site.assets.defaultOgImage}
+  enableHeroIntro
 >
   <HomeTemplate page={page} site={content.site} />
 </BaseLayout>
