@@ -263,7 +263,7 @@ describe('mapHomePage', () => {
     expect(heroSource).toContain('{scrollLabel}');
     expect(heroSource).toContain('{hero.chips.map((chip, index) => (');
     expect(heroSource).toContain('class="hero__descriptor-divider"');
-    expect(heroSource).toContain('</div>\n\n    <a href="#sobre-mi" class="hero__scroll"');
+    expect(heroSource).toMatch(/<\/div>\r?\n\r?\n\s+<a href="#sobre-mi" class="hero__scroll"/);
     expect(heroSource).not.toContain('class="hero__actions"');
     expect(heroSource).not.toContain('{hero.primaryCta.href}');
     expect(heroSource).not.toContain('{hero.secondaryCta.href}');
@@ -274,7 +274,7 @@ describe('mapHomePage', () => {
   it('keeps the hero vertically centered with stitch-like title hierarchy and scroll placement', () => {
     expect(heroSource).toContain('class="hero__title-name"');
     expect(heroSource).toContain('class="hero__title-support"');
-    expect(heroSource).toContain('</div>\n\n    <a href="#sobre-mi" class="hero__scroll"');
+    expect(heroSource).toMatch(/<\/div>\r?\n\r?\n\s+<a href="#sobre-mi" class="hero__scroll"/);
   });
 
   it('renders a full-width stitch-style header structure', () => {
@@ -338,11 +338,22 @@ describe('mapHomePage', () => {
     expect(aboutSource).toContain('id="sobre-mi"');
     expect(aboutSource).toContain('class="section section--about"');
     expect(aboutSource).toContain('class="container about about--stitch"');
+    expect(aboutSource).toContain('data-about-root');
     expect(aboutSource).toContain('class="about__media-column"');
+    expect(aboutSource).toContain('data-about-media');
     expect(aboutSource).toContain('class="about__content-column"');
     expect(aboutSource).toContain('class="about__heading-block"');
+    expect(aboutSource).toContain('data-about-heading-group');
     expect(aboutSource).toContain('class="about__eyebrow"');
+    expect(aboutSource).toContain('data-about-eyebrow');
+    expect(aboutSource).toContain('data-about-title');
+    expect(aboutSource).toContain('data-about-body');
+    expect(aboutSource).toContain('data-about-paragraph');
     expect(aboutSource).toContain('class="about__stats about__stats--stitch"');
+    expect(aboutSource).toContain('data-about-stats');
+    expect(aboutSource).toContain('data-about-stat');
+    expect(aboutSource).toContain('initAboutIntro');
+    expect(aboutSource).toContain("import { initAboutIntro } from '../../lib/animations/about/init-about-intro.ts';");
     expect(aboutSource).not.toContain('section-header section-header--compact');
     expect(aboutSource).not.toContain('<Heading as="h2" size="sm">');
     expect(aboutSource).not.toContain('about__content--editorial');

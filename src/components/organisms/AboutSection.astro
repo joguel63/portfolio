@@ -2,7 +2,6 @@
 import type { HomeAboutContent } from '../../lib/content/types/content';
 
 import Heading from '../atoms/Heading.astro';
-import Text from '../atoms/Text.astro';
 
 interface Props {
   about: HomeAboutContent;
@@ -12,11 +11,11 @@ const { about } = Astro.props as Props;
 ---
 
 <section id="sobre-mi" class="section section--about">
-  <div class="container about about--stitch">
-    <div class="about__media-column">
+  <div class="container about about--stitch" data-about-root>
+    <div class="about__media-column" data-about-media>
       <div class="about__portrait-shell">
-        <span class="about__portrait-halo" aria-hidden="true"></span>
-        <figure class="media-frame about__portrait">
+        <span class="about__portrait-halo" aria-hidden="true" data-about-halo></span>
+        <figure class="media-frame about__portrait" data-about-image>
           {about.image ? (
             <img
               src={about.image}
@@ -32,18 +31,22 @@ const { about } = Astro.props as Props;
     </div>
 
     <div class="about__content-column">
-      <div class="about__heading-block">
-        <span class="about__eyebrow">{about.title}</span>
-        <Heading as="h3" size="xl" className="about__heading">{about.heading}</Heading>
+      <div class="about__heading-block" data-about-heading-group>
+        <span class="about__eyebrow" data-about-eyebrow>{about.title}</span>
+        <div data-about-title>
+          <Heading as="h3" size="xl" className="about__heading">{about.heading}</Heading>
+        </div>
       </div>
 
-      <div class="about__body">
-        {about.body.map((paragraph) => <Text size="lead">{paragraph}</Text>)}
+      <div class="about__body" data-about-body>
+        {about.body.map((paragraph) => (
+          <p class="text text--lead" data-about-paragraph>{paragraph}</p>
+        ))}
       </div>
 
-      <div class="about__stats about__stats--stitch" aria-label={about.title}>
+      <div class="about__stats about__stats--stitch" aria-label={about.title} data-about-stats>
         {about.stats.map((stat) => (
-          <div class="about__stat-inline">
+          <div class="about__stat-inline" data-about-stat>
             <strong>{stat.value}</strong>
             <span>{stat.label}</span>
           </div>
@@ -52,3 +55,13 @@ const { about } = Astro.props as Props;
     </div>
   </div>
 </section>
+
+<script>
+  import { initAboutIntro } from '../../lib/animations/about/init-about-intro.ts';
+
+  const root = document.querySelector('[data-about-root]');
+
+  if (root instanceof HTMLElement) {
+    initAboutIntro(root);
+  }
+</script>
