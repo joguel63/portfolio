@@ -18,7 +18,7 @@ jobs:
       build-command: 'yarn build'
       dist-folder: 'dist'
       s3-bucket: 'portfolio-projects-container'
-      s3-prefix: 'celestial-menagerie'
+      s3-prefix: 'portfolio'
       aws-region: 'us-east-1'
       cloudfront-distribution-id: 'E3RZXNMXFR7F5L'
     secrets:
