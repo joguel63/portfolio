@@ -13,17 +13,19 @@ interface Props {
 const { title, intro, items } = Astro.props as Props;
 ---
 
-<section id="stack" class="section section--stack">
+<section id="stack" class="section section--stack" data-stack-root>
   <div class="container">
-    <div class="section-header section-header--stack">
-      <span class="eyebrow stack__eyebrow">{title}</span>
-      <Heading as="h2" size="xl">{intro}</Heading>
+    <div class="section-header section-header--stack" data-stack-header>
+      <span class="eyebrow stack__eyebrow" data-stack-eyebrow>{title}</span>
+      <div data-stack-title>
+        <Heading as="h2" size="xl">{intro}</Heading>
+      </div>
     </div>
 
     <div class="stack__cards">
-      <div class="stack__grid">
+      <div class="stack__grid" data-stack-grid>
         {items.map((item) => (
-          <div class="stack__item">
+          <div class="stack__item" data-stack-card>
             <SkillChip
               label={item.label}
               category={item.category}
@@ -36,3 +38,13 @@ const { title, intro, items } = Astro.props as Props;
     </div>
   </div>
 </section>
+
+<script>
+  import { initStackIntro } from '../../lib/animations/stack/init-stack-intro.ts';
+
+  const root = document.querySelector('[data-stack-root]');
+
+  if (root instanceof HTMLElement) {
+    initStackIntro(root);
+  }
+</script>

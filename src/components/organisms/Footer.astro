@@ -23,9 +23,9 @@ const footerTail =
     : 'Programación Agéntica con IA.';
 ---
 
-<footer class="site-footer">
-  <div class="site-footer__content">
-    <p class="site-footer__line">
+<footer class="site-footer" data-footer-root>
+  <div class="site-footer__content" data-footer-content>
+    <p class="site-footer__line" data-footer-line>
       <span>{footerLead}</span>
       <br class="site-footer__line-break" />
       <span class="site-footer__line-tail">{footerTail}</span>
@@ -36,6 +36,7 @@ const footerTail =
         <a
           href={link.href}
           class="nav-link"
+          data-footer-link
           target={link.href.startsWith('http') ? '_blank' : undefined}
           rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
         >
@@ -45,3 +46,13 @@ const footerTail =
     </nav>
   </div>
 </footer>
+
+<script>
+  import { initFooterIntro } from '../../lib/animations/footer/init-footer-intro.ts';
+
+  const root = document.querySelector('[data-footer-root]');
+
+  if (root instanceof HTMLElement) {
+    initFooterIntro(root);
+  }
+</script>

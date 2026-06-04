@@ -22,12 +22,16 @@ function getPrimaryLink(project: ProjectItemContent) {
 }
 ---
 
-<section id="proyectos" class="section section--projects">
+<section id="proyectos" class="section section--projects" data-projects-root>
   <div class="container projects">
-    <div class="section-header section-header--projects">
+    <div class="section-header section-header--projects" data-projects-header>
       <div class="projects__header-copy">
-        <Heading as="h2" size="sm">{title}</Heading>
-        <Heading as="h3" size="xl">{intro}</Heading>
+        <span data-projects-eyebrow>
+          <Heading as="h2" size="sm">{title}</Heading>
+        </span>
+        <span data-projects-heading>
+          <Heading as="h3" size="xl">{intro}</Heading>
+        </span>
       </div>
     </div>
 
@@ -35,6 +39,7 @@ function getPrimaryLink(project: ProjectItemContent) {
       <div class="projects__composition">
         <a
           class="projects__featured project-card__link-shell"
+          data-projects-featured
           href={getPrimaryLink(featuredProject)?.url}
           target="_blank"
           rel="noreferrer"
@@ -78,6 +83,7 @@ function getPrimaryLink(project: ProjectItemContent) {
             return (
               <a
                 class="project-card project-card--support project-card__link-shell"
+                data-projects-card
                 href={primaryLink?.url}
                 target="_blank"
                 rel="noreferrer"
@@ -105,3 +111,13 @@ function getPrimaryLink(project: ProjectItemContent) {
     )}
   </div>
 </section>
+
+<script>
+  import { initProjectsIntro } from '../../lib/animations/projects/init-projects-intro.ts';
+
+  const root = document.querySelector('[data-projects-root]');
+
+  if (root instanceof HTMLElement) {
+    initProjectsIntro(root);
+  }
+</script>

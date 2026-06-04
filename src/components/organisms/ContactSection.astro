@@ -20,20 +20,26 @@ interface Props {
 const { title, heading, description, primaryAction, secondaryAction } = Astro.props as Props;
 ---
 
-<section id="contacto" class="section section--contact">
+<section id="contacto" class="section section--contact" data-contact-root>
   <div class="contact contact--stitch">
-    <div class="contact-card contact-card--closing">
+    <div class="contact-card contact-card--closing" data-contact-card>
       <div class="panel contact-card__surface">
         <div class="contact-copy">
           <div class="section-header section-header--compact contact-header">
-            <Heading as="h2" size="sm">{title}</Heading>
-            <Heading as="h3" size="xl" className="contact__heading">{heading}</Heading>
+            <span data-contact-eyebrow>
+              <Heading as="h2" size="sm">{title}</Heading>
+            </span>
+            <span data-contact-heading>
+              <Heading as="h3" size="xl" className="contact__heading">{heading}</Heading>
+            </span>
           </div>
 
-          <Text size="lead" className="contact__description">{description}</Text>
+          <span data-contact-description>
+            <Text size="lead" className="contact__description">{description}</Text>
+          </span>
         </div>
 
-        <div class="contact-actions">
+        <div class="contact-actions" data-contact-actions>
           <ButtonLink href={primaryAction.href} className="contact-actions__primary">{primaryAction.label}</ButtonLink>
           {secondaryAction && (
             <ButtonLink
@@ -51,3 +57,13 @@ const { title, heading, description, primaryAction, secondaryAction } = Astro.pr
     </div>
   </div>
 </section>
+
+<script>
+  import { initContactIntro } from '../../lib/animations/contact/init-contact-intro.ts';
+
+  const root = document.querySelector('[data-contact-root]');
+
+  if (root instanceof HTMLElement) {
+    initContactIntro(root);
+  }
+</script>

@@ -1,0 +1,25 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    uses: joguel63/github-actions-templates/.github/workflows/deploy-s3-cloudfront.yml@main
+    with:
+      node-version: '20'
+      package-manager: 'yarn'
+      build-command: 'yarn build'
+      dist-folder: 'dist'
+      s3-bucket: 'portfolio-projects-container'
+      s3-prefix: 'celestial-menagerie'
+      aws-region: 'us-east-1'
+      cloudfront-distribution-id: 'E3RZXNMXFR7F5L'
+    secrets:
+      AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}

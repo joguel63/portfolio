@@ -307,10 +307,17 @@ describe('mapHomePage', () => {
     expect(stackSource).toContain('id="stack"');
     expect(stackSource).toContain('class="section section--stack"');
     expect(stackSource).toContain('class="section-header section-header--stack"');
+    expect(stackSource).toContain('data-stack-root');
+    expect(stackSource).toContain('data-stack-header');
     expect(stackSource).toContain('class="eyebrow stack__eyebrow"');
+    expect(stackSource).toContain('data-stack-eyebrow');
+    expect(stackSource).toContain('data-stack-title');
     expect(stackSource).toContain('class="stack__grid"');
+    expect(stackSource).toContain('data-stack-grid');
     expect(stackSource).toContain('class="stack__item"');
+    expect(stackSource).toContain('data-stack-card');
     expect(stackSource).toContain('class="stack__cards"');
+    expect(stackSource).toContain('initStackIntro');
     expect(skillChipSource).toContain('class="panel skill-card stack-card"');
     expect(skillChipSource).toContain('class="stack-card__icon"');
     expect(skillChipSource).toContain('class="cluster stack-card__tags"');
