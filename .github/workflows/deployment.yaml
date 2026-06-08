@@ -14,8 +14,8 @@ jobs:
     uses: joguel63/github-actions-templates/.github/workflows/deploy-s3-cloudfront.yml@main
     with:
       node-version: '20'
-      package-manager: 'yarn'
-      build-command: 'yarn build'
+      package-manager: 'pnpm'
+      build-command: 'pnpm build'
       dist-folder: 'dist'
       s3-bucket: 'portfolio-projects-container'
       s3-prefix: 'portfolio'
