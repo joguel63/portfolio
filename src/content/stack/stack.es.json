@@ -1,42 +1,42 @@
 [
   {
     "id": "frontend-engineering",
-    "label": "Frontend Engineering",
+    "label": "Arquitectura Frontend",
     "category": "Frontend",
     "order": 1,
-    "description": "Interfaces modernas, performantes y escalables.",
+    "description": "Interfaces de usuario escalables, performantes y mantenibles construidas con tecnologías web modernas.",
     "skills": ["React", "Next.js", "Vite", "TypeScript", "Material UI", "Tailwind", "Ant Design"]
   },
   {
     "id": "backend-apis",
-    "label": "Backend & APIs",
+    "label": "Servicios Backend & APIs",
     "category": "Backend",
     "order": 2,
-    "description": "Arquitectura robusta y servicios escalables.",
+    "description": "Servicios confiables, diseño de APIs, lógica de negocio e integraciones para aplicaciones listas para producción.",
     "skills": ["Node.js", "NestJS", "Express", "Prisma ORM", "REST APIs"]
   },
   {
     "id": "ai-automation",
-    "label": "AI & Automation",
+    "label": "Automatización & Flujos IA",
     "category": "Automation",
     "order": 3,
-    "description": "Ecosistemas autónomos y flujos inteligentes.",
+    "description": "Automatización de procesos, desarrollo asistido por IA y flujos inteligentes que mejoran la productividad de ingeniería.",
     "skills": ["LangChain", "LLMs", "Agentes", "RAG"]
   },
   {
     "id": "cloud-infrastructure",
-    "label": "Cloud & Infrastructure",
+    "label": "Cloud & DevOps",
     "category": "Cloud",
     "order": 4,
-    "description": "Despliegue, contenedores y sistemas distribuidos.",
+    "description": "Despliegues, pipelines CI/CD, contenedores e infraestructura cloud para entrega de software escalable.",
     "skills": ["Docker", "AWS", "OpenShift", "Azure", "CI/CD"]
   },
   {
     "id": "databases",
-    "label": "Databases",
+    "label": "Datos & Persistencia",
     "category": "Data",
     "order": 5,
-    "description": "Gestión de datos relacionales y NoSQL.",
+    "description": "Soluciones de bases de datos relacionales y NoSQL diseñadas para una gestión de datos confiable.",
     "skills": ["PostgreSQL", "MongoDB", "DynamoDB"]
   }
 ]

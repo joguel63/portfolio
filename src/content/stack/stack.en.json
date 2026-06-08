@@ -1,42 +1,42 @@
 [
   {
     "id": "frontend-engineering",
-    "label": "Frontend Engineering",
+    "label": "Frontend Architecture",
     "category": "Frontend",
     "order": 1,
-    "description": "Modern, performant, and scalable interfaces.",
+    "description": "Scalable, performant and maintainable user interfaces built with modern web technologies.",
     "skills": ["React", "Next.js", "Vite", "TypeScript", "Material UI", "Tailwind", "Ant Design"]
   },
   {
     "id": "backend-apis",
-    "label": "Backend & APIs",
+    "label": "Backend Services & APIs",
     "category": "Backend",
     "order": 2,
-    "description": "Robust architecture and scalable services.",
+    "description": "Reliable services, API design, business logic and integrations for production-ready applications.",
     "skills": ["Node.js", "NestJS", "Express", "Prisma ORM", "REST APIs"]
   },
   {
     "id": "ai-automation",
-    "label": "AI & Automation",
+    "label": "Automation & AI Workflows",
     "category": "Automation",
     "order": 3,
-    "description": "Autonomous ecosystems and intelligent workflows.",
+    "description": "Process automation, AI-assisted development and intelligent workflows that improve engineering productivity.",
     "skills": ["LangChain", "LLMs", "Agents", "RAG"]
   },
   {
     "id": "cloud-infrastructure",
-    "label": "Cloud & Infrastructure",
+    "label": "Cloud & DevOps",
     "category": "Cloud",
     "order": 4,
-    "description": "Deployment, containers, and distributed systems.",
+    "description": "Deployments, CI/CD pipelines, containers and cloud infrastructure for scalable software delivery.",
     "skills": ["Docker", "AWS", "OpenShift", "Azure", "CI/CD"]
   },
   {
     "id": "databases",
-    "label": "Databases",
+    "label": "Data & Persistence",
     "category": "Data",
     "order": 5,
-    "description": "Relational and NoSQL data management.",
+    "description": "Relational and NoSQL database solutions designed for reliable data management.",
     "skills": ["PostgreSQL", "MongoDB", "DynamoDB"]
   }
 ]

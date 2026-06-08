@@ -58,18 +58,18 @@ describe('mapHomePage', () => {
     expect(page.locale).toBe('es');
     expect(page.navigation.localeLabels.en).toBe('EN');
     expect(page.hero.title).toBe('Miguel Muñoz');
-    expect(page.hero.chips).toContain('Programación Agéntica con IA');
+    expect(page.hero.chips).toContain('Desarrollo Full Stack');
     expect(page.hero.primaryCta.href).toBe('#proyectos');
     expect(page.contact.primaryAction.href).toBe(content.home.contact.primaryAction.href);
     expect(page.contact.links.email).toBe(`mailto:${content.site.author.email}`);
     expect(page.projects.items.length).toBeGreaterThan(0);
-    expect(page.projects.sublabel).toBe('Curaduría 2026');
+    expect(page.projects.sublabel).toBe('Portfolio Beta');
     expect(page.projects.items[0].imageAlt).toBe(
       'Paisaje tecnológico abstracto con nodos de datos conectados y resaltados cian neón',
     );
     expect(page.projects.items[0].links.repo?.url).toContain('github.com');
     expect(page.stack.items).toHaveLength(5);
-    expect(page.stack.items[0].label).toBe('Frontend Engineering');
+    expect(page.stack.items[0].label).toBe('Arquitectura Frontend');
     expect(page.stack.items[0].skills).toEqual([
       'React',
       'Next.js',
@@ -81,8 +81,8 @@ describe('mapHomePage', () => {
     ]);
     expect(page.contact.links.github).toContain('github.com');
     expect(page.about.imageAlt).toBe('Retrato de Miguel Munoz');
-    expect(page.about.heading).toBe('Diseñando el futuro de la ingeniería autónoma.');
-    expect(page.contact.heading).toBe('¿Listo para escalar su infraestructura?');
+    expect(page.about.heading).toBe('Construyendo soluciones de software escalables, de la idea a producción.');
+    expect(page.contact.heading).toBe('¿Tienes una idea de software o un desafío técnico?');
     expect(page.seo.title.length).toBeGreaterThan(0);
   });
 

@@ -1,11 +1,11 @@
 {
   "hero": {
-    "eyebrow": "Full Stack & Systems Architect",
+    "eyebrow": "Full Stack Software Engineer",
     "title": "Miguel Muñoz",
     "description": "Software Engineer",
     "chips": [
-      "Programación Agéntica con IA",
-      "High-Performance Systems"
+      "Desarrollo Full Stack",
+      "Sistemas de Alto Rendimiento"
     ],
     "primaryCta": {
       "label": "Ver proyectos",
@@ -18,19 +18,19 @@
   },
   "about": {
     "title": "Sobre mí",
-    "heading": "Diseñando el futuro de la ingeniería autónoma.",
+    "heading": "Construyendo soluciones de software escalables, de la idea a producción.",
     "body": [
-      "Con un enfoque centrado en la programación agéntica, desarrollo sistemas que no solo responden a inputs, sino que razonan y operan de forma autónoma para resolver problemas complejos de ingeniería.",
-      "Mi trayectoria combina la robustez de la arquitectura de sistemas con la agilidad de las interfaces modernas. Creo firmemente que el software premium nace de la intersección entre el rendimiento técnico y una estética editorial impecable."
+      "Soy un Ingeniero de Software enfocado en diseñar y desarrollar plataformas digitales modernas, combinando arquitectura frontend, servicios backend, infraestructura cloud y automatización para resolver problemas reales de negocio.",
+      "Mi trabajo se guía por la arquitectura limpia, el rendimiento, la mantenibilidad y la experiencia de usuario. También exploro flujos de trabajo con IA y herramientas agénticas como una forma de acelerar el desarrollo y crear soluciones más inteligentes cuando aportan valor real."
     ],
     "stats": [
       {
-        "value": "8+",
+        "value": "5+",
         "label": "Años de Exp."
       },
       {
-        "value": "40+",
-        "label": "Sistemas IA"
+        "value": "20+",
+        "label": "Proyectos Web"
       }
     ],
     "image": "/images/about/profilepicture.png",
@@ -38,17 +38,17 @@
   },
   "stack": {
     "title": "Tech Stack",
-    "intro": "Herramientas de Alta Precisión"
+    "intro": "Stack Principal de Ingeniería"
   },
   "projects": {
     "title": "Proyectos",
-    "intro": "Trabajo Seleccionado",
-    "sublabel": "Curaduría 2026"
+    "intro": "Software Seleccionado",
+    "sublabel": "Portfolio Beta"
   },
   "contact": {
     "title": "Colaboración",
-    "heading": "¿Listo para escalar su infraestructura?",
-    "description": "Actualmente disponible para proyectos de consultoría técnica y desarrollo de sistemas basados en IA agéntica.",
+    "heading": "¿Tienes una idea de software o un desafío técnico?",
+    "description": "Abierto a colaborar en plataformas web, arquitectura frontend, servicios backend, integraciones cloud, flujos de automatización y soluciones de software potenciadas con IA.",
     "primaryAction": {
       "label": "Empezar un proyecto",
       "href": "mailto:hello@miguelmunoz.dev"
