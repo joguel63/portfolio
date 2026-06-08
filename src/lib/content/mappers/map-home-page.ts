@@ -24,7 +24,7 @@ export function mapHomePage(locale: AppLocale, content: SiteContentCollection): 
         email: emailHref,
         github: content.site.social.github,
         linkedin: content.site.social.linkedin,
-        resume: content.site.assets.resume,
+        resume: content.site.assets.resume?.[locale],
       },
     },
     seo: content.seo,

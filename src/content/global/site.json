@@ -6,10 +6,14 @@
     "email": "hello@miguelmunoz.dev"
   },
   "social": {
-    "github": "https://github.com/miguelmunoz",
-    "linkedin": "https://www.linkedin.com/in/miguelmunoz"
+    "github": "https://github.com/joguel63",
+    "linkedin": "https://www.linkedin.com/in/jose-miguel-mu%C3%B1oz-velasco/"
   },
   "assets": {
-    "defaultOgImage": "/images/og/home.svg"
+    "defaultOgImage": "/images/og/home.svg",
+    "resume": {
+      "es": "/docs/Miguel Mu%C3%B1oz cv.pdf",
+      "en": "/docs/Miguel Mu%C3%B1oz Resume.pdf"
+    }
   }
 }

@@ -16,7 +16,13 @@ export const siteSchema = z.object({
   assets: z
     .object({
       defaultOgImage: assetPathSchema.optional(),
-      resume: assetPathSchema.optional(),
+      resume: z
+        .object({
+          es: assetPathSchema,
+          en: assetPathSchema,
+        })
+        .strict()
+        .optional(),
     })
     .strict(),
 }).strict();

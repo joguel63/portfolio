@@ -21,7 +21,7 @@ const { page, site } = Astro.props as Props;
   locale={page.locale}
   navigation={page.navigation}
   siteName={site.author.name}
-  resumeHref={site.assets.resume}
+  resumeHref={site.assets.resume?.[page.locale]}
 />
 
 <main class="site-main">

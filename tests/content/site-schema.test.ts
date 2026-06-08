@@ -22,7 +22,7 @@ describe('siteSchema', () => {
       },
       assets: {
         defaultOgImage: '/images/og/home.jpg',
-        resume: '/files/resume.pdf',
+        resume: { es: '/files/resume-es.pdf', en: '/files/resume-en.pdf' },
       },
     });
 
@@ -44,13 +44,13 @@ describe('siteSchema', () => {
       },
       assets: {
         defaultOgImage: '/images/og/home.jpg',
-        resume: '/files/resume.pdf',
+        resume: { es: '/files/resume-es.pdf', en: '/files/resume-en.pdf' },
       },
     });
 
     expect(parsed.assets).toEqual({
       defaultOgImage: '/images/og/home.jpg',
-      resume: '/files/resume.pdf',
+      resume: { es: '/files/resume-es.pdf', en: '/files/resume-en.pdf' },
     });
   });
 

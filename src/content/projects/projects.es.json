@@ -12,11 +12,11 @@
     "links": {
       "repo": {
         "label": "Código",
-        "url": "https://github.com/miguelmunoz/portfolio"
+        "url": "https://github.com/joguel63/portfolio"
       },
       "caseStudy": {
         "label": "Caso de estudio",
-        "url": "https://github.com/miguelmunoz/portfolio"
+        "url": "https://github.com/joguel63/portfolio"
       }
     }
   },
@@ -33,7 +33,7 @@
     "links": {
       "demo": {
         "label": "Demo",
-        "url": "https://github.com/miguelmunoz/portfolio"
+        "url": "https://github.com/joguel63/portfolio"
       }
     }
   },
@@ -50,7 +50,7 @@
     "links": {
       "caseStudy": {
         "label": "Caso de estudio",
-        "url": "https://github.com/miguelmunoz/portfolio"
+        "url": "https://github.com/joguel63/portfolio"
       }
     }
   }

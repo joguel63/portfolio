@@ -9,7 +9,7 @@ export const absoluteUrlSchema = nonEmptyStringSchema.url().refine(
   'Expected an absolute URL',
 );
 
-export const assetPathSchema = nonEmptyStringSchema.regex(/^\/[A-Za-z0-9/_\-.]+$/, 'Expected a root-relative path');
+export const assetPathSchema = nonEmptyStringSchema.regex(/^\/[A-Za-z0-9/_\-. %]+$/, 'Expected a root-relative path');
 
 export const localeStringSchema = z.object({
   es: nonEmptyStringSchema,

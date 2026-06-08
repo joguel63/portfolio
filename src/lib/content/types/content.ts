@@ -17,7 +17,7 @@ export interface SiteContent {
   };
   assets: {
     defaultOgImage?: string;
-    resume?: string;
+    resume?: LocalizedValue<string>;
   };
 }
 

@@ -37,7 +37,8 @@ describe('loadSiteContent', () => {
     expect(es.home.contact.secondaryAction?.label).toBe('LinkedIn');
     expect(en.home.hero.title).toBe('Miguel Muñoz');
     expect(es.site.assets.defaultOgImage).toBe('/images/og/home.svg');
-    expect(es.site.assets.resume).toBeUndefined();
+    expect(es.site.assets.resume?.es).toBe('/docs/Miguel Mu%C3%B1oz cv.pdf');
+    expect(es.site.assets.resume?.en).toBe('/docs/Miguel Mu%C3%B1oz Resume.pdf');
     expect(es.stack).toHaveLength(5);
     expect(en.stack).toHaveLength(5);
     expect(es.stack[0].id).toBe('frontend-engineering');

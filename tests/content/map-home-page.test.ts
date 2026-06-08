@@ -100,7 +100,7 @@ describe('mapHomePage', () => {
           linkedin: 'https://linkedin.com/in/example',
         },
         assets: {
-          resume: '/files/resume.pdf',
+          resume: { es: '/files/resume-es.pdf', en: '/files/resume-en.pdf' },
         },
       },
       navigation: {
