@@ -50,6 +50,12 @@ body[data-hero-intro-state="active"] .site-header {
   letter-spacing: var(--font-tracking-tight);
 }
 
+.site-brand__logo {
+  height: 2rem;
+  width: auto;
+  display: block;
+}
+
 .site-header__nav,
 .footer-nav {
   display: flex;
