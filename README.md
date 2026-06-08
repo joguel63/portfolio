@@ -40,8 +40,8 @@ Bilingual portfolio site built with **Astro**, **TypeScript**, and **GSAP** — 
 ```bash
 git clone https://github.com/joguel63/portfolio.git
 cd portfolio
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 Open `http://localhost:4321` for Spanish, `http://localhost:4321/en/` for English.
@@ -51,9 +51,9 @@ Open `http://localhost:4321` for Spanish, `http://localhost:4321/en/` for Englis
 ## Verification
 
 ```bash
-yarn test          # Full test suite
-yarn check         # Astro type diagnostics
-yarn build         # Production build
+pnpm test          # Full test suite
+pnpm check         # Astro type diagnostics
+pnpm build         # Production build
 ```
 
 ---
