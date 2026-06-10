@@ -7,7 +7,7 @@
     "role": "Arquitectura Full Stack",
     "stack": ["React", "TypeScript", "Cloud"],
     "featured": true,
-    "image": "/images/projects/cognitive-engine-v2.jpg",
+    "image": "/images/projects/cognitive-engine-v2.webp",
     "imageAlt": "Paisaje tecnológico abstracto con nodos de datos conectados y resaltados cian neón",
     "links": {
       "repo": {
@@ -28,7 +28,7 @@
     "role": "Ingeniería Frontend",
     "stack": ["Dashboards", "APIs", "Visualización de Datos"],
     "featured": false,
-    "image": "/images/projects/nexus-dash.jpg",
+    "image": "/images/projects/nexus-dash.webp",
     "imageAlt": "Render arquitectónico minimalista de un rack de servidores moderno con resplandor azul en un entorno oscuro",
     "links": {
       "demo": {
@@ -45,7 +45,7 @@
     "role": "Automatización",
     "stack": ["Automatización", "APIs", "Flujos IA"],
     "featured": false,
-    "image": "/images/projects/hyperscale-core.jpg",
+    "image": "/images/projects/hyperscale-core.webp",
     "imageAlt": "Arte generativo con patrones geométricos e hilos de luz sobre fondo negro profundo",
     "links": {
       "caseStudy": {

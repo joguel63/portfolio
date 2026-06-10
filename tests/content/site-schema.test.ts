@@ -117,7 +117,7 @@ describe('siteSchema', () => {
           { value: '8+', label: 'Years of Exp.' },
           { value: '40+', label: 'AI Systems' },
         ],
-        image: '/images/about/miguel-portrait.jpg',
+        image: '/images/about/profilepicture.webp',
         imageAlt: 'Portrait of Miguel Munoz',
       },
       stack: {
@@ -158,7 +158,7 @@ describe('siteSchema', () => {
         role: 'Design and development',
         stack: ['Astro'],
         featured: true,
-        image: '/images/projects/cognitive-engine-v2.jpg',
+        image: '/images/projects/cognitive-engine-v2.webp',
         imageAlt: 'Miguel Portfolio project preview',
         links: {
           repo: {
