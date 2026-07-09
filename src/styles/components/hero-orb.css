@@ -94,6 +94,22 @@ body[data-hero-intro-state="active"] .hero__orb-orbit::before {
   opacity: 0;
 }
 
+/* FOUC guard: hide orb structural layers from the first paint on eligible
+   pages, mirroring the hero text guard in hero.css. The core stays visible
+   because it is the seed that the intro grows from. */
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) .hero__orb-ring,
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) .hero__orb-satellite,
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) .hero__orb-orbit::before {
+  opacity: 0;
+}
+
+/* The satellite pulse keyframes animate opacity, which would override the
+   FOUC opacity:0 guard above while the intro is still pending. Pause the
+   pulse until the body flips to data-hero-intro-state="released". */
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) .hero__orb-satellite {
+  animation: none;
+}
+
 .hero__orb-orbit--alpha {
   width: var(--hero-orb-orbit-alpha-size);
   height: var(--hero-orb-orbit-alpha-size);

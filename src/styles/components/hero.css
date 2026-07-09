@@ -29,6 +29,19 @@ body[data-hero-intro-state="active"] {
   scrollbar-gutter: stable;
 }
 
+/* FOUC guard: hide the animated hero targets from the first paint on eligible
+   pages, before the runtime motion controller has a chance to run. The
+   ineligible default (opacity: 1) is restored once the body flips to
+   data-hero-intro-state="released" (success, failure, or reduced motion). A
+   <noscript> fallback in BaseLayout reveals everything when JS is off. */
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) [data-hero-title],
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) [data-hero-eyebrow],
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) [data-hero-support],
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) [data-hero-descriptors],
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) [data-hero-scroll] {
+  opacity: 0;
+}
+
 body[data-hero-intro-state="active"] [data-hero-title],
 body[data-hero-intro-state="active"] [data-hero-eyebrow],
 body[data-hero-intro-state="active"] [data-hero-support],
