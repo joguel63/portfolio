@@ -65,7 +65,7 @@ describe('mapHomePage', () => {
     expect(page.projects.items.length).toBeGreaterThan(0);
     expect(page.projects.sublabel).toBe('Portfolio Beta');
     expect(page.projects.items[0].imageAlt).toBe(
-      'Paisaje tecnológico abstracto con nodos de datos conectados y resaltados cian neón',
+      'Vista previa de Celestial Menagerie, tienda de fantasía oscura con catálogo de criaturas mágicas',
     );
     expect(page.projects.items[0].links.repo?.url).toContain('github.com');
     expect(page.stack.items).toHaveLength(5);

@@ -63,10 +63,10 @@ describe('loadSiteContent', () => {
       'Tailwind',
       'Ant Design',
     ]);
-    expect(es.projects[0].title).toBe('Plataforma Web Escalable');
-    expect(es.projects[0].role).toBe('Arquitectura Full Stack');
+    expect(es.projects[0].title).toBe('Celestial Menagerie');
+    expect(es.projects[0].role).toBe('Frontend Full Stack');
     expect(en.projects[0].imageAlt).toBe(
-      'Abstract technological landscape with connected data nodes and neon cyan highlights',
+      'Preview of Celestial Menagerie, a dark fantasy storefront with a catalog of magical creatures',
     );
     expect(es.projects[0].links.repo?.url).toContain('github.com');
     expect(es.projects[0].stack.length).toBeGreaterThan(0);
