@@ -1,56 +1,22 @@
 [
   {
-    "id": "cognitive-engine-v2",
-    "title": "Scalable Web Platform",
-    "summary": "A modern web platform concept focused on frontend architecture, backend services and cloud-ready deployment for real business workflows.",
-    "year": "2026",
-    "role": "Full Stack Architecture",
-    "stack": ["React", "TypeScript", "Cloud"],
+    "id": "celestial-menagerie",
+    "title": "Celestial Menagerie",
+    "summary": "A dark fantasy storefront built with React, Vite, TypeScript and Material UI. A polished multi-page SPA for a fictional marketplace of mythological creatures, magical supplies, arcane habitats and guild memberships, with custom theming, routing, responsive layouts and bilingual support.",
+    "year": "2025",
+    "role": "Frontend Full Stack",
+    "stack": ["React", "Vite", "TypeScript", "Material UI"],
     "featured": true,
-    "image": "/images/projects/cognitive-engine-v2.webp",
-    "imageAlt": "Abstract technological landscape with connected data nodes and neon cyan highlights",
-    "links": {
-      "repo": {
-        "label": "Code",
-        "url": "https://github.com/joguel63/portfolio"
-      },
-      "caseStudy": {
-        "label": "Case study",
-        "url": "https://github.com/joguel63/portfolio"
-      }
-    }
-  },
-  {
-    "id": "nexus-dash",
-    "title": "Operations Dashboard",
-    "summary": "A dashboard concept designed for process monitoring, data visualization and user-friendly workflows for business teams.",
-    "year": "2026",
-    "role": "Frontend Engineering",
-    "stack": ["Dashboards", "APIs", "Data Visualization"],
-    "featured": false,
-    "image": "/images/projects/nexus-dash.webp",
-    "imageAlt": "Minimal architectural rendering of a modern server rack glowing with soft blue light in a dark void",
+    "image": "/images/projects/celestial-menagerie.webp",
+    "imageAlt": "Preview of Celestial Menagerie, a dark fantasy storefront with a catalog of magical creatures",
     "links": {
       "demo": {
         "label": "Demo",
-        "url": "https://github.com/joguel63/portfolio"
-      }
-    }
-  },
-  {
-    "id": "hyperscale-core",
-    "title": "Automation Workflow System",
-    "summary": "An automation-oriented solution concept built to reduce manual work, integrate services and improve technical or business processes.",
-    "year": "2026",
-    "role": "Automation",
-    "stack": ["Automation", "APIs", "AI Workflows"],
-    "featured": false,
-    "image": "/images/projects/hyperscale-core.webp",
-    "imageAlt": "Generative geometric artwork built from light threads on a deep black background",
-    "links": {
-      "caseStudy": {
-        "label": "Case study",
-        "url": "https://github.com/joguel63/portfolio"
+        "url": "https://www.miguelmunoz.dev/celestial-menagerie/"
+      },
+      "repo": {
+        "label": "Code",
+        "url": "https://github.com/joguel63/celestial-store-demo"
       }
     }
   }

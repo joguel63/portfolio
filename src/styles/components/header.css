@@ -18,6 +18,17 @@ body[data-hero-intro-state="active"] .site-header {
   pointer-events: none;
 }
 
+/* FOUC guard: hide the header from the first paint on hero-intro-eligible
+   pages, before the runtime motion controller flips the body to
+   data-hero-intro-state="active". Mirrors the active-state contract so the
+   header cannot flash visible during the JS bootstrap window. */
+body[data-hero-intro-eligible="true"]:not([data-hero-intro-state="released"]) .site-header {
+  opacity: 0;
+  transform: translateY(-0.75rem);
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .site-header__bar {
   width: 100%;
   border-bottom: 1px solid var(--color-header-border);

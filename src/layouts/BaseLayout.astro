@@ -77,6 +77,31 @@ const rootLocaleRedirectScript = enableRootLocaleRedirect ? createRootLocaleRedi
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    <noscript>
+      <style>
+        body[data-hero-intro-eligible="true"] [data-hero-title],
+        body[data-hero-intro-eligible="true"] [data-hero-eyebrow],
+        body[data-hero-intro-eligible="true"] [data-hero-support],
+        body[data-hero-intro-eligible="true"] [data-hero-descriptors],
+        body[data-hero-intro-eligible="true"] [data-hero-scroll],
+        body[data-hero-intro-eligible="true"] .hero__orb-ring,
+        body[data-hero-intro-eligible="true"] .hero__orb-satellite,
+        body[data-hero-intro-eligible="true"] .hero__orb-orbit::before {
+          opacity: 1;
+        }
+
+        body[data-hero-intro-eligible="true"] .hero__orb-satellite {
+          animation: hero-orb-satellite-pulse 2.6s ease-in-out infinite;
+        }
+
+        body[data-hero-intro-eligible="true"] .site-header {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+          pointer-events: auto;
+        }
+      </style>
+    </noscript>
   </head>
   <body class="site-shell" data-hero-intro-eligible={enableHeroIntro ? 'true' : undefined}>
     <slot />

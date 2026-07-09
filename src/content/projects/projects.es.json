@@ -1,56 +1,22 @@
 [
   {
-    "id": "cognitive-engine-v2",
-    "title": "Plataforma Web Escalable",
-    "summary": "Concepto de plataforma web moderna enfocada en arquitectura frontend, servicios backend y despliegue cloud-ready para flujos de negocio reales.",
-    "year": "2026",
-    "role": "Arquitectura Full Stack",
-    "stack": ["React", "TypeScript", "Cloud"],
+    "id": "celestial-menagerie",
+    "title": "Celestial Menagerie",
+    "summary": "Tienda de fantasía oscura construida con React, Vite, TypeScript y Material UI. SPA multipágina para un mercado ficticio de criaturas mitológicas, suministros mágicos, hábitats arcanos y membresías de gremio, con theming personalizado, routing, layouts responsivos y soporte bilingüe.",
+    "year": "2025",
+    "role": "Frontend Full Stack",
+    "stack": ["React", "Vite", "TypeScript", "Material UI"],
     "featured": true,
-    "image": "/images/projects/cognitive-engine-v2.webp",
-    "imageAlt": "Paisaje tecnológico abstracto con nodos de datos conectados y resaltados cian neón",
-    "links": {
-      "repo": {
-        "label": "Código",
-        "url": "https://github.com/joguel63/portfolio"
-      },
-      "caseStudy": {
-        "label": "Caso de estudio",
-        "url": "https://github.com/joguel63/portfolio"
-      }
-    }
-  },
-  {
-    "id": "nexus-dash",
-    "title": "Dashboard de Operaciones",
-    "summary": "Concepto de dashboard diseñado para monitoreo de procesos, visualización de datos y flujos de trabajo intuitivos para equipos de negocio.",
-    "year": "2026",
-    "role": "Ingeniería Frontend",
-    "stack": ["Dashboards", "APIs", "Visualización de Datos"],
-    "featured": false,
-    "image": "/images/projects/nexus-dash.webp",
-    "imageAlt": "Render arquitectónico minimalista de un rack de servidores moderno con resplandor azul en un entorno oscuro",
+    "image": "/images/projects/celestial-menagerie.webp",
+    "imageAlt": "Vista previa de Celestial Menagerie, tienda de fantasía oscura con catálogo de criaturas mágicas",
     "links": {
       "demo": {
         "label": "Demo",
-        "url": "https://github.com/joguel63/portfolio"
-      }
-    }
-  },
-  {
-    "id": "hyperscale-core",
-    "title": "Sistema de Automatización de Flujos",
-    "summary": "Concepto de solución orientada a automatización para reducir trabajo manual, integrar servicios y mejorar procesos técnicos o de negocio.",
-    "year": "2026",
-    "role": "Automatización",
-    "stack": ["Automatización", "APIs", "Flujos IA"],
-    "featured": false,
-    "image": "/images/projects/hyperscale-core.webp",
-    "imageAlt": "Arte generativo con patrones geométricos e hilos de luz sobre fondo negro profundo",
-    "links": {
-      "caseStudy": {
-        "label": "Caso de estudio",
-        "url": "https://github.com/joguel63/portfolio"
+        "url": "https://www.miguelmunoz.dev/celestial-menagerie/"
+      },
+      "repo": {
+        "label": "Código",
+        "url": "https://github.com/joguel63/celestial-store-demo"
       }
     }
   }
